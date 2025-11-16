@@ -558,8 +558,56 @@ video {
   display: flex;
 }
 
+.h-1\/2 {
+  height: 50%;
+}
+
+.h-\[30\%\] {
+  height: 30%;
+}
+
+.h-\[33\%\] {
+  height: 33%;
+}
+
+.h-\[35\%\] {
+  height: 35%;
+}
+
+.h-\[66\%\] {
+  height: 66%;
+}
+
+.h-full {
+  height: 100%;
+}
+
 .h-screen {
   height: 100vh;
+}
+
+.w-1\/2 {
+  width: 50%;
+}
+
+.w-\[38\%\] {
+  width: 38%;
+}
+
+.w-\[45\%\] {
+  width: 45%;
+}
+
+.w-\[90\%\] {
+  width: 90%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .items-center {
@@ -570,17 +618,78 @@ video {
   justify-content: center;
 }
 
-.bg-slate-700 {
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.rounded {
+  border-radius: 0.25rem;
+}
+
+.rounded-t {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.rounded-t-3xl {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+}
+
+.border {
+  border-width: 1px;
+}
+
+.border-r {
+  border-right-width: 1px;
+}
+
+.bg-green-600 {
   --tw-bg-opacity: 1;
-  background-color: rgb(51 65 85 / var(--tw-bg-opacity, 1));
+  background-color: rgb(22 163 74 / var(--tw-bg-opacity, 1));
 }
 
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
+.bg-orange-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity, 1));
 }
 
-.text-white {
-  --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+.bg-purple-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(88 28 135 / var(--tw-bg-opacity, 1));
+}
+
+.bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity, 1));
+}
+
+.bg-yellow-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(202 138 4 / var(--tw-bg-opacity, 1));
+}
+
+.bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity, 1));
+}
+
+.bg-\[url\(\'img\/plan\.jpg\'\)\] {
+  background-image: url('img/plan.jpg');
+}
+
+.bg-\[length\:100\%_100\%\] {
+  background-size: 100% 100%;
+}
+
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+
+.opacity-50 {
+  opacity: 0.5;
 }
