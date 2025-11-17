@@ -8,24 +8,24 @@
     <link href="./output.css" rel="stylesheet">
 </head>
 <body class="bg-slate-600">
-    <div id="popup" class="hidden fixed inset-0 bg-black/50 z-[9999] flex justify-center items-center">
+    <div id="popup" class="hidden fixed inset-0 bg-black/50 z-[9999] justify-center items-center">
         <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
-            <div class="w-full flex justify-end">
-                <div class="bg-red-600 text-white h-6 w-6 flex justify-center items-center p-2 rounded-full mr-4">X</div>
-            </div>
             <div class="mt-4 w-full px-4 flex flex-col items-center gap-4">
                 <img class="rounded-full w-20" src="img/man.png" alt="">
-                <input class="w-full h-8 rounded-full focus:outline-none text-center" placeholder="Photo URL" type="text">
-                <select class="w-full h-8 rounded-full focus:outline-none text-center" name="Gender" id="gender">
+                <div class="bg-white w-full h-8 rounded-full flex justify-between">
+                    <input class="w-[80%] h-8 rounded-full focus:outline-none pl-3" placeholder="Photo URL" type="text">
+                    <div id="adds" class="bg-green-600 text-white h-full w-[20%] flex justify-center items-center p-2 rounded-full">Add</div>
+                </div>
+                <select class="w-full h-8 rounded-full focus:outline-none pl-2" name="Gender" id="gender">
                     <option value="" disabled selected>Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                 </select>
-                <input class="w-full h-8 rounded-full focus:outline-none text-center" placeholder="First Name" type="text">
-                <input class="w-full h-8 rounded-full focus:outline-none text-center" placeholder="Last Name" type="text">
-                <input class="w-full h-8 rounded-full focus:outline-none text-center" placeholder="Email" type="text">
-                <input class="w-full h-8 rounded-full focus:outline-none text-center" placeholder="Tel" type="text">
-                <select class="w-full h-8 rounded-full focus:outline-none text-center" name="Role" id="role">
+                <input class="w-full h-8 rounded-full focus:outline-none pl-3" placeholder="First Name" type="text">
+                <input class="w-full h-8 rounded-full focus:outline-none pl-3" placeholder="Last Name" type="text">
+                <input class="w-full h-8 rounded-full focus:outline-none pl-3" placeholder="Email" type="text">
+                <input class="w-full h-8 rounded-full focus:outline-none pl-3" placeholder="Tel" type="text">
+                <select class="w-full h-8 rounded-full focus:outline-none pl-2" name="Role" id="role">
                     <option value="" disabled selected>Role</option>
                     <option value="Receptionist">Receptionist</option>
                     <option value="Technician">IT Technician</option>
@@ -34,6 +34,41 @@
                     <option value="Cleaner">Cleaner</option>
                     <option value="Other">Other</option>
                 </select>
+                <div class="bg-white w-full h-8 rounded-full flex justify-between">
+                    <input class="w-[80%] h-8 rounded-full focus:outline-none pl-3" placeholder="Add Experiences" type="text">
+                    <div id="add" class="bg-green-600 text-white h-full w-[20%] flex justify-center items-center p-2 rounded-full">Add</div>
+                </div>
+                <div class="bg-slate-400 w-full h-8 rounded-full flex flex-wrap justify-between items-center px-8">
+                    <li class="text-slate-900"></li>
+                </div>
+                <div class="w-full flex justify-center mt-2 gap-2">
+                    <div id="create" class="bg-green-600 text-white h-8 w-[20%] flex justify-center items-center p-2 rounded-full">Create</div>
+                    <div id="close" class="bg-red-600 text-white h-8 w-[20%] flex justify-center items-center p-2 rounded-full">Close</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="infopopup" class="flex fixed inset-0 bg-black/50 z-[9999] justify-center items-center">
+        <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
+            <div class="mt-4 w-full px-4 flex flex-col items-center gap-3">
+                <img class="rounded-full w-20" src="img/man.png">
+                <h1 class="text-slate-900 font-bold">Houssam YAKHLAF</h1>
+                <h1 class="text-slate-900">Developer</h1>
+                <a href="" class="text-slate-900">Email</a>
+                <h1 class="text-slate-900">06 15 94 06 05</h1>
+                <div class="bg-slate-400 w-full rounded-full flex flex-col justify-between items-center px-8">
+                    <h1 class="text-slate-900">Experience</h1>
+                    <div class="w-full flex flex-wrap">
+                        <li class="text-slate-900"></li>
+                    </div>
+                </div>
+                <div class="flex gap-1">
+                    <h1 class="text-slate-900">Now in</h1><p>Salle de conférence</p>
+                </div>
+            </div>
+            <div class="w-full flex justify-center mt-4 gap-2">
+                <div id="done" class="bg-green-600 text-white h-6 w-[20%] flex justify-center items-center p-2 rounded-full">Done</div>
+                <div id="del" class="bg-red-600 text-white h-6 w-[20%] flex justify-center items-center p-2 rounded-full">Delete</div>
             </div>
         </div>
     </div>
