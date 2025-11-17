@@ -1,5 +1,5 @@
 let newbtn = document.querySelector("#new");
-let newinfo = { url: 'url', gender: 'gender', first: 'first', last: 'last', email: 'email', tel: 'tel', role: 'role', exper: 'experiance', situation: false, id: '00' };
+let newinfo = { url: '', gender: '', first: '', last: '', email: '', tel: '', role: '', exper: [], situation: false, id: '' };
 let info = JSON.parse(window.localStorage.getItem("employer")) || [];
 let gender = document.querySelector("#gender");
 let first = document.querySelector("#first");
@@ -7,6 +7,7 @@ let last = document.querySelector("#last");
 let email = document.querySelector("#email");
 let tel = document.querySelector("#tel");
 let role = document.querySelector("#role");
+let employerplay = document.querySelector("#employerplay");
 
 newbtn.onclick = function () {
     document.querySelector("#redmsg").style.display = "none";
@@ -49,6 +50,7 @@ document.querySelector("#adds").onclick = function () {
     } else {
         document.querySelector("#newimg").src = document.querySelector("#urlimg").value;
         document.querySelector("#imginput").style.display = "none";
+        newinfo.url = document.querySelector("#urlimg").value;
     }
 }
 document.querySelector("#add").onclick = function () {
@@ -62,6 +64,7 @@ document.querySelector("#add").onclick = function () {
         });
     } else {
         document.querySelector("#experinput").classList.remove("border-red-600");
+        newinfo.exper.push(document.querySelector("#experinputs").value);
         document.querySelector("#experience").insertAdjacentHTML("beforeend", `
             <li class="text-slate-900">${document.querySelector("#experinputs").value}</li>`
         );
@@ -140,10 +143,49 @@ document.querySelector("#create").onclick = function () {
         }
     } else {
         document.querySelector("#redmsg").style.display = "none";
+        newinfo.gender = gender.value;
+        newinfo.first = first.value;
+        newinfo.last = last.value;
+        newinfo.email = email.value;
+        newinfo.tel = tel.value;
+        newinfo.role = role.value;
+        newinfo.id = info.length + 1;
         info.push(newinfo);
         console.log(info);
         window.localStorage.setItem("employer", JSON.stringify(info));
         document.querySelector("#popup").style.display = "none";
-        newinfo = [];
+        newinfo = { url: '', gender: '', first: '', last: '', email: '', tel: '', role: '', exper: [], situation: false, id: '' };
+        location.reload();
+    }
+}
+
+if (info.length == 0) {
+    document.querySelector("#nomsg").style.display = "flex";
+    document.querySelector("#number").style.display = "none";
+} else {
+    document.querySelector("#available").textContent = info.length;
+    document.querySelector("#total").textContent = info.length;
+    for (let i = 0; i < info.length; i++) {
+    employerplay.insertAdjacentHTML("beforeend", `
+        <div class="bg-slate-400 w-full py-2 rounded-full flex items-center justify-between px-3">
+            <div class="flex gap-2">
+                <img id="profil" class="w-14 h-14 rounded-full" src="">
+                <div class="flex flex-col justify-center">
+                    <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
+                    <h1 class="text-slate-900">${info[i].role}</h1>
+                </div>
+            </div>
+        </div>`
+    );
+    if (info[i].url == "") {
+        if (info[i].gender == "Male") {
+            document.querySelector("#profil").src = "img/man.png";
+        } else {
+            document.querySelector("#profil").src = "img/woman.png";
+        }
+    } else {
+        document.querySelector("#profil").src = info[i].url;
+    }
+        document.querySelector("#profil").removeAttribute("id");
     }
 }
