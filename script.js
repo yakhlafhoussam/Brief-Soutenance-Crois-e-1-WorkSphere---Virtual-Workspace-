@@ -10,11 +10,19 @@ let role = document.querySelector("#role");
 let start = document.querySelector("#start");
 let end = document.querySelector("#end");
 let employerplay = document.querySelector("#employerplay");
+let employerinput = document.querySelector("#employerinput");
+let meeting;
+let reception;
+let archive;
+let security;
+let staff;
+let server;
 let employers;
 let chose;
 let index;
 let num = 0;
 let total = 0;
+let urlput = false;
 
 function turnon() {
     employers = document.querySelectorAll(".showinfo");
@@ -66,6 +74,67 @@ function turnon() {
     });
 }
 
+function addemployer() {
+    document.querySelectorAll(".added").forEach(carded => {
+        carded.addEventListener("click", (eventsed) => {
+            chose = eventsed.currentTarget.id;
+            index = info.findIndex(info => info.id + "ed" == chose);
+            document.querySelector(".meeting").src = info[index].url;
+            info[index].situation = "meeting";
+            window.localStorage.setItem("employer", JSON.stringify(info));
+            location.reload();
+            document.querySelector("#inputpopup").style.display = "none";
+        });
+    });
+}
+
+function plusdisplay() {
+    document.querySelector("#closeinput").onclick = function () {
+        document.querySelector("#inputpopup").style.display = "none";
+        document.querySelector("#nomsginput").style.display = "none";
+        employerinput.innerHTML = "";
+    }
+    meeting.forEach(card => {
+        card.addEventListener("click", (events) => {
+            document.querySelector("#inputpopup").style.display = "flex";
+            if (num == 0) {
+                document.querySelector("#nomsginput").style.display = "flex";
+            } else {
+                for (let i = 0; i < info.length; i++) {
+                    if (info[i].id != 0) {
+                        if (info[i].situation == false) {
+                            employerinput.insertAdjacentHTML("beforeend", `
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                                <div class="flex gap-2">
+                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <div class="flex flex-col justify-center">
+                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                    </div>
+                                </div>
+                            </div>`
+                            );
+                            if (info[i].url == "") {
+                                if (info[i].gender == "Male") {
+                                    document.querySelector("#profil").src = "img/man.png";
+                                } else {
+                                    document.querySelector("#profil").src = "img/woman.png";
+                                }
+                            } else {
+                                document.querySelector("#profil").src = info[i].url;
+                            }
+                            document.querySelector("#profil").removeAttribute("id");
+                        } else {
+                            document.querySelector(`.${info[i].situation}`).src = info[i].url;
+                        }
+                    }
+                }
+                addemployer();
+            }
+        });
+    });
+}
+
 newbtn.onclick = function () {
     document.querySelector("#redmsg").style.display = "none";
     document.querySelector("#newimg").src = "img/man.png";
@@ -108,6 +177,7 @@ document.querySelector("#adds").onclick = function () {
         document.querySelector("#newimg").src = document.querySelector("#urlimg").value;
         document.querySelector("#imginput").style.display = "none";
         newinfo.url = document.querySelector("#urlimg").value;
+        urlput = true;
     }
 }
 document.querySelector("#add").onclick = function () {
@@ -244,6 +314,13 @@ document.querySelector("#create").onclick = function () {
     } else {
         document.querySelector("#redmsg").style.display = "none";
         newinfo.gender = gender.value;
+        if (urlput == false) {
+            if (gender.value == "Male") {
+                newinfo.url = "img/man.png"
+            } else {
+                newinfo.url = "img/woman.png";
+            }
+        }
         newinfo.first = first.value;
         newinfo.last = last.value;
         newinfo.email = email.value;
@@ -259,14 +336,19 @@ document.querySelector("#create").onclick = function () {
         location.reload();
     }
 }
-
-if (info.length == 0) {
+for (let cal = 0; cal < info.length; cal++) {
+    if (info[cal].id != 0) {
+        total++;
+    }
+}
+if (total == 0) {
     document.querySelector("#nomsg").style.display = "flex";
     document.querySelector("#number").style.display = "none";
+    turnon();
+    plusdisplay();
 } else {
     for (let i = 0; i < info.length; i++) {
         if (info[i].id != 0) {
-            total++;
             if (info[i].situation == false) {
                 num++;
                 employerplay.insertAdjacentHTML("beforeend", `
@@ -291,11 +373,19 @@ if (info.length == 0) {
                 }
                 document.querySelector("#profil").removeAttribute("id");
             } else {
-
+                document.querySelector(`.${info[i].situation}`).src = info[i].url;
+                document.querySelector(`.${info[i].situation}`).classList.replace(info[i].situation, info[i].situation + "ed");
             }
         }
     }
+    meeting = document.querySelectorAll(".meeting");
+    reception = document.querySelectorAll(".reception");
+    archive = document.querySelectorAll(".archive");
+    security = document.querySelectorAll(".security");
+    staff = document.querySelectorAll(".staff");
+    server = document.querySelectorAll(".server");
     document.querySelector("#total").textContent = total;
     document.querySelector("#available").textContent = num;
     turnon();
+    plusdisplay();
 }
