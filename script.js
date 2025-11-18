@@ -8,6 +8,57 @@ let email = document.querySelector("#email");
 let tel = document.querySelector("#tel");
 let role = document.querySelector("#role");
 let employerplay = document.querySelector("#employerplay");
+let employers;
+let chose;
+let index;
+
+function turnon() {
+    employers = document.querySelectorAll(".showinfo");
+    employers.forEach(card => {
+        card.addEventListener("click", (events) => {
+            chose = Number(events.currentTarget.id);
+            index = info.findIndex(info => info.id === chose);
+            document.querySelector("#infopopup").style.display = "flex";
+            if (info[index].url == "") {
+                if (info[index].gender == "Male") {
+                    document.querySelector("#profile").src = "img/man.png"
+                } else {
+                    document.querySelector("#profile").src = "img/woman.png"
+                }
+            } else {
+                document.querySelector("#profile").src = info[index].url;
+            }
+            document.querySelector("#nameinfo").textContent = info[index].first + " " + info[index].last;
+            document.querySelector("#roleinfo").textContent = info[index].role;
+            document.querySelector("#emailinfo").textContent = info[index].email;
+            document.querySelector("#emailinfo").href = "mailto:" + info[index].email;
+            document.querySelector("#telinfo").textContent = info[index].tel;
+            if (info[index].exper.length == 0) {
+                document.querySelector("#experienceinfo").style.display = "none";
+            } else {
+                document.querySelector("#experienceinfo").style.display = "flex";
+                document.querySelector("#experiencelist").innerHTML = "";
+                for (let ex = 0; ex < info[index].exper.length; ex++) {
+                    document.querySelector("#experiencelist").insertAdjacentHTML("beforeend", `
+                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                    `)
+                }
+            }
+            if (info[index].situation == false) {
+                document.querySelector("#situation").textContent = "This employer is absent";
+            }
+            document.querySelector("#done").onclick = function () {
+                document.querySelector("#infopopup").style.display = "none";
+            }
+            document.querySelector("#del").onclick = function () {
+                info[index].id = 0;
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                document.querySelector("#infopopup").style.display = "none";
+                location.reload();
+            }
+        });
+    });
+}
 
 newbtn.onclick = function () {
     document.querySelector("#redmsg").style.display = "none";
@@ -151,7 +202,6 @@ document.querySelector("#create").onclick = function () {
         newinfo.role = role.value;
         newinfo.id = info.length + 1;
         info.push(newinfo);
-        console.log(info);
         window.localStorage.setItem("employer", JSON.stringify(info));
         document.querySelector("#popup").style.display = "none";
         newinfo = { url: '', gender: '', first: '', last: '', email: '', tel: '', role: '', exper: [], situation: false, id: '' };
@@ -166,8 +216,9 @@ if (info.length == 0) {
     document.querySelector("#available").textContent = info.length;
     document.querySelector("#total").textContent = info.length;
     for (let i = 0; i < info.length; i++) {
-    employerplay.insertAdjacentHTML("beforeend", `
-        <div class="bg-slate-400 w-full py-2 rounded-full flex items-center justify-between px-3">
+        if (info[i].id != 0) {
+            employerplay.insertAdjacentHTML("beforeend", `
+        <div id="${info[i].id}" class="bg-slate-400 w-full py-2 rounded-full flex items-center justify-between px-3 showinfo">
             <div class="flex gap-2">
                 <img id="profil" class="w-14 h-14 rounded-full" src="">
                 <div class="flex flex-col justify-center">
@@ -176,16 +227,18 @@ if (info.length == 0) {
                 </div>
             </div>
         </div>`
-    );
-    if (info[i].url == "") {
-        if (info[i].gender == "Male") {
-            document.querySelector("#profil").src = "img/man.png";
-        } else {
-            document.querySelector("#profil").src = "img/woman.png";
+            );
+            if (info[i].url == "") {
+                if (info[i].gender == "Male") {
+                    document.querySelector("#profil").src = "img/man.png";
+                } else {
+                    document.querySelector("#profil").src = "img/woman.png";
+                }
+            } else {
+                document.querySelector("#profil").src = info[i].url;
+            }
+            document.querySelector("#profil").removeAttribute("id");
         }
-    } else {
-        document.querySelector("#profil").src = info[i].url;
     }
-        document.querySelector("#profil").removeAttribute("id");
-    }
+    turnon();
 }
