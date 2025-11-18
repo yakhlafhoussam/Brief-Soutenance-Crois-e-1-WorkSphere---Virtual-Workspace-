@@ -26,7 +26,7 @@
                 <input id="last" class="w-full h-8 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Last Name" type="text">
                 <input id="email" class="w-full h-8 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Email" type="text">
                 <input id="tel" class="w-full h-8 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Tel" type="text">
-                <select id="role" class="w-full h-8 rounded-full focus:outline-none pl-2 border border-solid" name="Role" id="role">
+                <select id="role" class="w-full h-8 rounded-full focus:outline-none pl-2 border border-solid" name="Role">
                     <option value="0" disabled selected>Role</option>
                     <option value="Receptionist">Receptionist</option>
                     <option value="Technician">IT Technician</option>
@@ -52,19 +52,19 @@
     <div id="infopopup" class="hidden fixed inset-0 bg-black/50 z-[9999] justify-center items-center">
         <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
             <div class="mt-4 w-full px-4 flex flex-col items-center gap-3">
-                <img class="rounded-full w-20" src="img/man.png">
-                <h1 class="text-slate-900 font-bold">Houssam YAKHLAF</h1>
-                <h1 class="text-slate-900">Developer</h1>
-                <a href="" class="text-slate-900">Email</a>
-                <h1 class="text-slate-900">06 15 94 06 05</h1>
-                <div class="bg-slate-400 w-full rounded-full flex flex-col justify-between items-center px-8">
+                <img id="profile" class="rounded-full w-20" src="img/man.png">
+                <h1 id="nameinfo" class="text-slate-900 font-bold">Houssam YAKHLAF</h1>
+                <h1 id="roleinfo" class="text-slate-900">Developer</h1>
+                <a id="emailinfo" href="" class="text-slate-900">Email</a>
+                <h1 id="telinfo" class="text-slate-900">06 15 94 06 05</h1>
+                <div id="experienceinfo" class="bg-slate-400 w-full rounded-full flex flex-col justify-between items-center px-8 py-2">
                     <h1 class="text-slate-900">Experience</h1>
-                    <div class="w-full flex flex-wrap">
-                        <li class="text-slate-900"></li>
+                    <div id="experiencelist" class="w-full flex flex-wrap gap-8">
+                        
                     </div>
                 </div>
                 <div class="flex gap-1">
-                    <h1 class="text-slate-900">Now in</h1><p>Salle de conférence</p>
+                    <h1 id="situation" class="text-slate-900">Now in</h1>
                 </div>
             </div>
             <div class="w-full flex justify-center mt-4 gap-2">
