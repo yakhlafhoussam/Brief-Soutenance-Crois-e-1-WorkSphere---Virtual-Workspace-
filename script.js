@@ -1,5 +1,5 @@
 let newbtn = document.querySelector("#new");
-let newinfo = { url: '', gender: '', first: '', last: '', email: '', tel: '', role: '', exper: [], situation: false, id: '' };
+let newinfo = { url: '', gender: '', first: '', last: '', email: '', tel: '', role: '', exper: [], situation: false, id: '', start: '', end: '' };
 let info = JSON.parse(window.localStorage.getItem("employer")) || [];
 let gender = document.querySelector("#gender");
 let first = document.querySelector("#first");
@@ -7,10 +7,14 @@ let last = document.querySelector("#last");
 let email = document.querySelector("#email");
 let tel = document.querySelector("#tel");
 let role = document.querySelector("#role");
+let start = document.querySelector("#start");
+let end = document.querySelector("#end");
 let employerplay = document.querySelector("#employerplay");
 let employers;
 let chose;
 let index;
+let num = 0;
+let total = 0;
 
 function turnon() {
     employers = document.querySelectorAll(".showinfo");
@@ -30,6 +34,8 @@ function turnon() {
             }
             document.querySelector("#nameinfo").textContent = info[index].first + " " + info[index].last;
             document.querySelector("#roleinfo").textContent = info[index].role;
+            document.querySelector("#startinfo").textContent = info[index].start;
+            document.querySelector("#endinfo").textContent = info[index].end;
             document.querySelector("#emailinfo").textContent = info[index].email;
             document.querySelector("#emailinfo").href = "mailto:" + info[index].email;
             document.querySelector("#telinfo").textContent = info[index].tel;
@@ -124,7 +130,7 @@ document.querySelector("#add").onclick = function () {
     }
 }
 document.querySelector("#create").onclick = function () {
-    if (gender.value == "0" || first.value == "" || last.value == "" || email.value == "" || tel.value == "" || role.value == "0") {
+    if (gender.value == "0" || first.value == "" || last.value == "" || email.value == "" || tel.value == "" || role.value == "0" || start.value == "" || end.value == "" || end.value <= start.value) {
         document.querySelector("#redmsg").style.display = "flex";
         if (gender.value == "0") {
             gender.classList.add("border-red-600");
@@ -192,6 +198,49 @@ document.querySelector("#create").onclick = function () {
         } else {
             role.classList.remove("border-red-600");
         }
+        if (start.value == "") {
+            start.classList.add("border-red-600");
+            gsap.to(start, {
+                x: 3,
+                duration: 0.05,
+                yoyo: true,
+                repeat: 3,
+            });
+        } else {
+            start.classList.remove("border-red-600");
+        }
+        if (end.value == "") {
+            end.classList.add("border-red-600");
+            gsap.to(end, {
+                x: 3,
+                duration: 0.05,
+                yoyo: true,
+                repeat: 3,
+            });
+        } else {
+            end.classList.remove("border-red-600");
+        }
+        if (end.value <= start.value) {
+            document.querySelector("#reddatemsg").style.display = "flex";
+            start.classList.add("border-red-600");
+            gsap.to(start, {
+                x: 3,
+                duration: 0.05,
+                yoyo: true,
+                repeat: 3,
+            });
+            end.classList.add("border-red-600");
+            gsap.to(end, {
+                x: 3,
+                duration: 0.05,
+                yoyo: true,
+                repeat: 3,
+            });
+        } else {
+            start.classList.remove("border-red-600");
+            end.classList.remove("border-red-600");
+            document.querySelector("#reddatemsg").style.display = "none";
+        }
     } else {
         document.querySelector("#redmsg").style.display = "none";
         newinfo.gender = gender.value;
@@ -200,6 +249,8 @@ document.querySelector("#create").onclick = function () {
         newinfo.email = email.value;
         newinfo.tel = tel.value;
         newinfo.role = role.value;
+        newinfo.start = start.value;
+        newinfo.end = end.value;
         newinfo.id = info.length + 1;
         info.push(newinfo);
         window.localStorage.setItem("employer", JSON.stringify(info));
@@ -213,32 +264,38 @@ if (info.length == 0) {
     document.querySelector("#nomsg").style.display = "flex";
     document.querySelector("#number").style.display = "none";
 } else {
-    document.querySelector("#available").textContent = info.length;
-    document.querySelector("#total").textContent = info.length;
     for (let i = 0; i < info.length; i++) {
         if (info[i].id != 0) {
-            employerplay.insertAdjacentHTML("beforeend", `
-        <div id="${info[i].id}" class="bg-slate-400 w-full py-2 rounded-full flex items-center justify-between px-3 showinfo">
-            <div class="flex gap-2">
-                <img id="profil" class="w-14 h-14 rounded-full" src="">
-                <div class="flex flex-col justify-center">
-                    <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
-                    <h1 class="text-slate-900">${info[i].role}</h1>
-                </div>
-            </div>
-        </div>`
-            );
-            if (info[i].url == "") {
-                if (info[i].gender == "Male") {
-                    document.querySelector("#profil").src = "img/man.png";
+            total++;
+            if (info[i].situation == false) {
+                num++;
+                employerplay.insertAdjacentHTML("beforeend", `
+                    <div id="${info[i].id}" class="bg-slate-400 w-full py-2 rounded-full flex items-center justify-between px-3 showinfo">
+                        <div class="flex gap-2">
+                            <img id="profil" class="w-14 h-14 rounded-full" src="">
+                            <div class="flex flex-col justify-center">
+                                <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
+                                <h1 class="text-slate-900">${info[i].role}</h1>
+                            </div>
+                        </div>
+                    </div>`
+                );
+                if (info[i].url == "") {
+                    if (info[i].gender == "Male") {
+                        document.querySelector("#profil").src = "img/man.png";
+                    } else {
+                        document.querySelector("#profil").src = "img/woman.png";
+                    }
                 } else {
-                    document.querySelector("#profil").src = "img/woman.png";
+                    document.querySelector("#profil").src = info[i].url;
                 }
+                document.querySelector("#profil").removeAttribute("id");
             } else {
-                document.querySelector("#profil").src = info[i].url;
+
             }
-            document.querySelector("#profil").removeAttribute("id");
         }
     }
+    document.querySelector("#total").textContent = total;
+    document.querySelector("#available").textContent = num;
     turnon();
 }
