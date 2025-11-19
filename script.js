@@ -35,6 +35,10 @@ let searchinput = "";
 let firstsearch = "";
 let lastsearch = "";
 let found = false;
+let receptionnum;
+let archivenum;
+let securitynum;
+let servernum;
 
 
 function turnon() {
@@ -67,7 +71,7 @@ function turnon() {
                 document.querySelector("#experiencelist").innerHTML = "";
                 for (let ex = 0; ex < info[index].exper.length; ex++) {
                     document.querySelector("#experiencelist").insertAdjacentHTML("beforeend", `
-                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                        <li class="text-slate-900 md:text-2xl">${info[index].exper[ex]}</li>
                     `)
                 }
             }
@@ -94,7 +98,6 @@ function turnon() {
 function addemployer() {
     document.querySelectorAll(".added").forEach(carded => {
         carded.addEventListener("click", (eventsed) => {
-            if (chose != 0) {
                 chose = eventsed.currentTarget.id;
                 index = info.findIndex(info => info.id + "ed" == chose);
                 document.querySelector(".meeting").src = info[index].url;
@@ -103,7 +106,6 @@ function addemployer() {
                 location.reload();
                 document.querySelector("#inputpopup").style.display = "none";
                 chose = 0;
-            }
         });
     });
 }
@@ -212,10 +214,10 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
-                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
-                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                        <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
                                     </div>
                                 </div>
                             </div>`
@@ -232,7 +234,7 @@ function plusdisplay() {
                             document.querySelector("#profil").removeAttribute("id");
                         } else {
                             if (info[i].situation != "meeting") {
-                                document.querySelector(`.${info[i].situation}`).src = info[i].url;
+                                console.log(info[i].situation)
                             }
                         }
                     }
@@ -269,7 +271,7 @@ function plusdisplay() {
                 document.querySelector("#experiencelistinput").innerHTML = "";
                 for (let ex = 0; ex < info[index].exper.length; ex++) {
                     document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
-                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                        <li class="text-slate-900 md:text-2xl">${info[index].exper[ex]}</li>
                     `)
                 }
             }
@@ -297,10 +299,10 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
-                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
-                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                        <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
                                     </div>
                                 </div>
                             </div>`
@@ -358,7 +360,7 @@ function plusdisplay() {
                 document.querySelector("#experiencelistinput").innerHTML = "";
                 for (let ex = 0; ex < info[index].exper.length; ex++) {
                     document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
-                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                        <li class="text-slate-900 md:text-2xl">${info[index].exper[ex]}</li>
                     `)
                 }
             }
@@ -386,10 +388,10 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
-                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
-                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                        <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
                                     </div>
                                 </div>
                             </div>`
@@ -447,7 +449,7 @@ function plusdisplay() {
                 document.querySelector("#experiencelistinput").innerHTML = "";
                 for (let ex = 0; ex < info[index].exper.length; ex++) {
                     document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
-                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                        <li class="text-slate-900 md:text-2xl">${info[index].exper[ex]}</li>
                     `)
                 }
             }
@@ -475,10 +477,10 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
-                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
-                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                        <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
                                     </div>
                                 </div>
                             </div>`
@@ -536,7 +538,7 @@ function plusdisplay() {
                 document.querySelector("#experiencelistinput").innerHTML = "";
                 for (let ex = 0; ex < info[index].exper.length; ex++) {
                     document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
-                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                        <li class="text-slate-900 md:text-2xl">${info[index].exper[ex]}</li>
                     `)
                 }
             }
@@ -564,10 +566,10 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
-                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
-                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                        <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
                                     </div>
                                 </div>
                             </div>`
@@ -625,7 +627,7 @@ function plusdisplay() {
                 document.querySelector("#experiencelistinput").innerHTML = "";
                 for (let ex = 0; ex < info[index].exper.length; ex++) {
                     document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
-                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                        <li class="text-slate-900 md:text-2xl">${info[index].exper[ex]}</li>
                     `)
                 }
             }
@@ -653,10 +655,10 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
-                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
-                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                        <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
                                     </div>
                                 </div>
                             </div>`
@@ -714,7 +716,7 @@ function plusdisplay() {
                 document.querySelector("#experiencelistinput").innerHTML = "";
                 for (let ex = 0; ex < info[index].exper.length; ex++) {
                     document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
-                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                        <li class="text-slate-900 md:text-2xl">${info[index].exper[ex]}</li>
                     `)
                 }
             }
@@ -752,10 +754,10 @@ search.onclick = function () {
                 document.querySelector("#employersearch").insertAdjacentHTML("beforeend", `
                     <div id="${info[hyk].id}" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 showinfo">
                         <div class="flex gap-2">
-                            <img id="profil" class="w-14 h-14 rounded-full" src="">
+                            <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                             <div class="flex flex-col justify-center">
-                                <h1 class="text-slate-900 font-bold">${info[hyk].first} ${info[hyk].last}</h1>
-                                <h1 class="text-slate-900">${info[hyk].role}</h1>
+                                <h1 class="text-slate-900 font-bold md:text-2xl">${info[hyk].first} ${info[hyk].last}</h1>
+                                <h1 class="text-slate-900 md:text-2xl">${info[hyk].role}</h1>
                             </div>
                         </div>
                     </div>`
@@ -842,7 +844,7 @@ document.querySelector("#add").onclick = function () {
         document.querySelector("#experinput").classList.remove("border-red-600");
         newinfo.exper.push(document.querySelector("#experinputs").value);
         document.querySelector("#experience").insertAdjacentHTML("beforeend", `
-            <li class="text-slate-900">${document.querySelector("#experinputs").value}</li>`
+            <li class="text-slate-900 md:text-2xl">${document.querySelector("#experinputs").value}</li>`
         );
         document.querySelector("#experinputs").value = "";
         document.querySelector("#experience").style.display = "flex";
@@ -1003,10 +1005,10 @@ if (total == 0) {
                 employerplay.insertAdjacentHTML("beforeend", `
                     <div id="${info[i].id}" class="bg-slate-400 w-full py-2 rounded-full flex items-center justify-between px-3 showinfo">
                         <div class="flex gap-2">
-                            <img id="profil" class="w-14 h-14 rounded-full" src="">
+                            <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                             <div class="flex flex-col justify-center">
-                                <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
-                                <h1 class="text-slate-900">${info[i].role}</h1>
+                                <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
+                                <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
                             </div>
                         </div>
                     </div>`
@@ -1027,6 +1029,26 @@ if (total == 0) {
                 document.querySelector(`.${info[i].situation}`).classList.replace(info[i].situation, info[i].situation + "ed");
             }
         }
+    }
+    receptionnum = document.querySelectorAll(".reception");
+    archivenum = document.querySelectorAll(".archive");
+    servernum = document.querySelectorAll(".server");
+    securitynum = document.querySelectorAll(".security");
+    if (receptionnum.length == 7) {
+        document.querySelector("#receptionroom").classList.add("opacity-50");
+        document.querySelector("#receptionroom").classList.add("bg-red-600");
+    }
+    if (archivenum.length == 4) {
+        document.querySelector("#archiveroom").classList.add("opacity-50");
+        document.querySelector("#archiveroom").classList.add("bg-red-600");
+    }
+    if (servernum.length == 1) {
+        document.querySelector("#serverroom").classList.add("opacity-50");
+        document.querySelector("#serverroom").classList.add("bg-red-600");
+    }
+    if (securitynum.length == 4) {
+        document.querySelector("#securityroom").classList.add("opacity-50");
+        document.querySelector("#securityroom").classList.add("bg-red-600");
     }
     if (num == 0) {
         document.querySelector("#nomsg").style.display = "flex";
