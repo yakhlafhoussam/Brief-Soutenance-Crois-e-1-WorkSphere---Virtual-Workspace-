@@ -25,7 +25,7 @@
                 <input id="first" class="w-full h-8 rounded-full focus:outline-none pl-3 border border-solid" placeholder="First Name" type="text">
                 <input id="last" class="w-full h-8 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Last Name" type="text">
                 <input id="email" class="w-full h-8 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Email" type="text">
-                <input id="tel" class="w-full h-8 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Tel" type="text">
+                <input id="tel" class="w-full h-8 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Tel" type="tel">
                 <select id="role" class="w-full h-8 rounded-full focus:outline-none pl-2 border border-solid" name="Role">
                     <option value="0" disabled selected>Role</option>
                     <option value="Receptionist">Receptionist</option>
@@ -137,8 +137,23 @@
             </div>
         </div>
     </div>
+    <div id="searchpopup" class="hidden fixed inset-0 bg-black/50 z-[9990] justify-center items-center">
+        <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col items-center">
+            <input id="searchinput" class="w-11/12 h-8 rounded-full focus:outline-none pl-3 border border-solid" placeholder="searching..." type="text">
+            <div id="employersearch" class="w-full max-h-80 flex flex-col items-center gap-2 overflow-y-scroll mt-2">
+                
+            </div>
+            <h1 id="nomsgsearch" class="hidden justify-center font-bold">There are no employees with these standards</h1>
+            <div class="w-full flex justify-center mt-4 gap-2">
+                <div id="closesearch" class="bg-red-600 text-white h-6 w-[20%] flex justify-center items-center p-2 rounded-full">Close</div>
+            </div>
+        </div>
+    </div>
     <div class="flex flex-col justify-between items-center h-screen">
-    <div class="w-full h-16 bg-slate-300"></div>
+    <div class="w-full h-16 flex items-center justify-between px-5 bg-slate-300">
+        <h1 class="text-xl font-bold text-slate-800">WorkSphere</h1>
+        <img id="search" class="w-8" src="img/search.png">
+    </div>
     <div class="bg-[url('img/plan.jpg')] bg-[length:100%_100%] bg-no-repeat w-[90%] h-[30%] flex justify-between">
         <div class="w-[38%] h-full flex flex-col justify-between">
             <div class="w-full h-[33%] flex flex-col">
@@ -193,7 +208,7 @@
                     </div>
                 </div>
                 <div class="w-1/2 h-full flex justify-center items-center">
-                    <div class="w-full flex justify-center flex-wrap gap-4">
+                    <div class="w-11/12 flex justify-center flex-wrap gap-4">
                         <img class="security w-4 h-4 rounded-full" src="img/plus.png">
                         <img class="security w-4 h-4 rounded-full" src="img/plus.png">
                         <img class="security w-4 h-4 rounded-full" src="img/plus.png">
