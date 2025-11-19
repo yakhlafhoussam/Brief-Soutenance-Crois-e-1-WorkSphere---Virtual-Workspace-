@@ -17,12 +17,19 @@ let archive;
 let security;
 let staff;
 let server;
+let meetinged;
+let receptioned;
+let archiveed;
+let securityed;
+let staffed;
+let servered;
 let employers;
 let chose;
 let index;
 let num = 0;
 let total = 0;
 let urlput = false;
+let inputnum = 0;
 
 function turnon() {
     employers = document.querySelectorAll(".showinfo");
@@ -77,13 +84,101 @@ function turnon() {
 function addemployer() {
     document.querySelectorAll(".added").forEach(carded => {
         carded.addEventListener("click", (eventsed) => {
-            chose = eventsed.currentTarget.id;
-            index = info.findIndex(info => info.id + "ed" == chose);
-            document.querySelector(".meeting").src = info[index].url;
-            info[index].situation = "meeting";
-            window.localStorage.setItem("employer", JSON.stringify(info));
-            location.reload();
-            document.querySelector("#inputpopup").style.display = "none";
+            if (chose != 0) {
+                chose = eventsed.currentTarget.id;
+                index = info.findIndex(info => info.id + "ed" == chose);
+                document.querySelector(".meeting").src = info[index].url;
+                info[index].situation = "meeting";
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                location.reload();
+                document.querySelector("#inputpopup").style.display = "none";
+                chose = 0;
+            }
+        });
+    });
+}
+
+function addreceptionemployer() {
+    document.querySelectorAll(".added").forEach(carded => {
+        carded.addEventListener("click", (eventsed) => {
+            if (chose != 0) {
+                chose = eventsed.currentTarget.id;
+                index = info.findIndex(info => info.id + "ed" == chose);
+                document.querySelector(".reception").src = info[index].url;
+                info[index].situation = "reception";
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                location.reload();
+                document.querySelector("#inputpopup").style.display = "none";
+                chose = 0;
+            }
+        });
+    });
+}
+
+function addarchiveemployer() {
+    document.querySelectorAll(".added").forEach(carded => {
+        carded.addEventListener("click", (eventsed) => {
+            if (chose != 0) {
+                chose = eventsed.currentTarget.id;
+                index = info.findIndex(info => info.id + "ed" == chose);
+                document.querySelector(".archive").src = info[index].url;
+                info[index].situation = "archive";
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                location.reload();
+                document.querySelector("#inputpopup").style.display = "none";
+                chose = 0;
+            }
+        });
+    });
+}
+
+function addsecurityemployer() {
+    document.querySelectorAll(".added").forEach(carded => {
+        carded.addEventListener("click", (eventsed) => {
+            if (chose != 0) {
+                chose = eventsed.currentTarget.id;
+                index = info.findIndex(info => info.id + "ed" == chose);
+                document.querySelector(".security").src = info[index].url;
+                info[index].situation = "security";
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                location.reload();
+                document.querySelector("#inputpopup").style.display = "none";
+                chose = 0;
+            }
+        });
+    });
+}
+
+function addstaffemployer() {
+    document.querySelectorAll(".added").forEach(carded => {
+        carded.addEventListener("click", (eventsed) => {
+            if (chose != 0) {
+                chose = eventsed.currentTarget.id;
+                index = info.findIndex(info => info.id + "ed" == chose);
+                document.querySelector(".staff").src = info[index].url;
+                info[index].situation = "staff";
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                location.reload();
+                document.querySelector("#inputpopup").style.display = "none";
+                chose = 0;
+            }
+        });
+    });
+}
+
+function addserveremployer() {
+    document.querySelectorAll(".added").forEach(carded => {
+        carded.addEventListener("click", (eventsed) => {
+            if (chose != 0) {
+                chose = eventsed.currentTarget.id;
+                index = info.findIndex(info => info.id + "ed" == chose);
+                document.querySelector(".server").src = info[index].url;
+                info[index].situation = "server";
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                location.reload();
+                document.querySelector("#inputpopup").style.display = "none";
+                chose = 0;
+            }
         });
     });
 }
@@ -92,6 +187,7 @@ function plusdisplay() {
     document.querySelector("#closeinput").onclick = function () {
         document.querySelector("#inputpopup").style.display = "none";
         document.querySelector("#nomsginput").style.display = "none";
+        inputnum = 0;
         employerinput.innerHTML = "";
     }
     meeting.forEach(card => {
@@ -125,11 +221,502 @@ function plusdisplay() {
                             }
                             document.querySelector("#profil").removeAttribute("id");
                         } else {
-                            document.querySelector(`.${info[i].situation}`).src = info[i].url;
+                            if (info[i].situation != "meeting") {
+                                document.querySelector(`.${info[i].situation}`).src = info[i].url;
+                            }
                         }
                     }
                 }
                 addemployer();
+            }
+        });
+    });
+    meetinged.forEach(card => {
+        card.addEventListener("click", (events) => {
+            chose = events.currentTarget.id;
+            index = info.findIndex(info => info.id + "ed" == chose);
+            document.querySelector("#infoputpopup").style.display = "flex";
+            if (info[index].url == "") {
+                if (info[index].gender == "Male") {
+                    document.querySelector("#profileinput").src = "img/man.png"
+                } else {
+                    document.querySelector("#profileinput").src = "img/woman.png"
+                }
+            } else {
+                document.querySelector("#profileinput").src = info[index].url;
+            }
+            document.querySelector("#nameinfoinput").textContent = info[index].first + " " + info[index].last;
+            document.querySelector("#roleinfoinput").textContent = info[index].role;
+            document.querySelector("#startinfoinput").textContent = info[index].start;
+            document.querySelector("#endinfoinput").textContent = info[index].end;
+            document.querySelector("#emailinfoinput").textContent = info[index].email;
+            document.querySelector("#emailinfoinput").href = "mailto:" + info[index].email;
+            document.querySelector("#telinfoinput").textContent = info[index].tel;
+            if (info[index].exper.length == 0) {
+                document.querySelector("#experienceinfoinput").style.display = "none";
+            } else {
+                document.querySelector("#experienceinfoinput").style.display = "flex";
+                document.querySelector("#experiencelistinput").innerHTML = "";
+                for (let ex = 0; ex < info[index].exper.length; ex++) {
+                    document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
+                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                    `)
+                }
+            }
+            document.querySelector("#situationinput").textContent = "This employer in the meeting room";
+            document.querySelector("#doneinput").onclick = function () {
+                document.querySelector("#infoputpopup").style.display = "none";
+            }
+            document.querySelector("#delinput").onclick = function () {
+                info[index].situation = false;
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                document.querySelector("#infoputpopup").style.display = "none";
+                location.reload();
+            }
+        });
+    });
+    reception.forEach(card => {
+        card.addEventListener("click", (events) => {
+            document.querySelector("#inputpopup").style.display = "flex";
+            if (num == 0) {
+                document.querySelector("#nomsginput").style.display = "flex";
+            } else {
+                for (let i = 0; i < info.length; i++) {
+                    if (info[i].id != 0) {
+                        if (info[i].situation == false && info[i].role == "Manager" || info[i].situation == false && info[i].role == "Receptionist") {
+                            employerinput.insertAdjacentHTML("beforeend", `
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                                <div class="flex gap-2">
+                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <div class="flex flex-col justify-center">
+                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                    </div>
+                                </div>
+                            </div>`
+                            );
+                            if (info[i].url == "") {
+                                if (info[i].gender == "Male") {
+                                    document.querySelector("#profil").src = "img/man.png";
+                                } else {
+                                    document.querySelector("#profil").src = "img/woman.png";
+                                }
+                            } else {
+                                document.querySelector("#profil").src = info[i].url;
+                            }
+                            document.querySelector("#profil").removeAttribute("id");
+                            inputnum++;
+                        } else {
+                            if (info[i].situation != "Manager" || info[i].situation != "Receptionist") {
+                                console.log(info[i].situation)
+                            }
+                        }
+                    }
+                }
+                if (inputnum == 0) {
+                    document.querySelector("#nomsginput").style.display = "flex";
+                }
+                addreceptionemployer();
+            }
+        });
+    });
+    receptioned.forEach(card => {
+        card.addEventListener("click", (events) => {
+            chose = events.currentTarget.id;
+            index = info.findIndex(info => info.id + "ed" == chose);
+            document.querySelector("#infoputpopup").style.display = "flex";
+            if (info[index].url == "") {
+                if (info[index].gender == "Male") {
+                    document.querySelector("#profileinput").src = "img/man.png"
+                } else {
+                    document.querySelector("#profileinput").src = "img/woman.png"
+                }
+            } else {
+                document.querySelector("#profileinput").src = info[index].url;
+            }
+            document.querySelector("#nameinfoinput").textContent = info[index].first + " " + info[index].last;
+            document.querySelector("#roleinfoinput").textContent = info[index].role;
+            document.querySelector("#startinfoinput").textContent = info[index].start;
+            document.querySelector("#endinfoinput").textContent = info[index].end;
+            document.querySelector("#emailinfoinput").textContent = info[index].email;
+            document.querySelector("#emailinfoinput").href = "mailto:" + info[index].email;
+            document.querySelector("#telinfoinput").textContent = info[index].tel;
+            if (info[index].exper.length == 0) {
+                document.querySelector("#experienceinfoinput").style.display = "none";
+            } else {
+                document.querySelector("#experienceinfoinput").style.display = "flex";
+                document.querySelector("#experiencelistinput").innerHTML = "";
+                for (let ex = 0; ex < info[index].exper.length; ex++) {
+                    document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
+                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                    `)
+                }
+            }
+            document.querySelector("#situationinput").textContent = "This employer in the reception room";
+            document.querySelector("#doneinput").onclick = function () {
+                document.querySelector("#infoputpopup").style.display = "none";
+            }
+            document.querySelector("#delinput").onclick = function () {
+                info[index].situation = false;
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                document.querySelector("#infoputpopup").style.display = "none";
+                location.reload();
+            }
+        });
+    });
+    archive.forEach(card => {
+        card.addEventListener("click", (events) => {
+            document.querySelector("#inputpopup").style.display = "flex";
+            if (num == 0) {
+                document.querySelector("#nomsginput").style.display = "flex";
+            } else {
+                for (let i = 0; i < info.length; i++) {
+                    if (info[i].id != 0) {
+                        if (info[i].situation == false && info[i].role != "Cleaner") {
+                            employerinput.insertAdjacentHTML("beforeend", `
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                                <div class="flex gap-2">
+                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <div class="flex flex-col justify-center">
+                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                    </div>
+                                </div>
+                            </div>`
+                            );
+                            if (info[i].url == "") {
+                                if (info[i].gender == "Male") {
+                                    document.querySelector("#profil").src = "img/man.png";
+                                } else {
+                                    document.querySelector("#profil").src = "img/woman.png";
+                                }
+                            } else {
+                                document.querySelector("#profil").src = info[i].url;
+                            }
+                            document.querySelector("#profil").removeAttribute("id");
+                            inputnum++;
+                        } else {
+                            if (info[i].situation == "Cleaner") {
+                                console.log(info[i].situation)
+                            }
+                        }
+                    }
+                }
+                if (inputnum == 0) {
+                    document.querySelector("#nomsginput").style.display = "flex";
+                }
+                addarchiveemployer();
+            }
+        });
+    });
+    archiveed.forEach(card => {
+        card.addEventListener("click", (events) => {
+            chose = events.currentTarget.id;
+            index = info.findIndex(info => info.id + "ed" == chose);
+            document.querySelector("#infoputpopup").style.display = "flex";
+            if (info[index].url == "") {
+                if (info[index].gender == "Male") {
+                    document.querySelector("#profileinput").src = "img/man.png"
+                } else {
+                    document.querySelector("#profileinput").src = "img/woman.png"
+                }
+            } else {
+                document.querySelector("#profileinput").src = info[index].url;
+            }
+            document.querySelector("#nameinfoinput").textContent = info[index].first + " " + info[index].last;
+            document.querySelector("#roleinfoinput").textContent = info[index].role;
+            document.querySelector("#startinfoinput").textContent = info[index].start;
+            document.querySelector("#endinfoinput").textContent = info[index].end;
+            document.querySelector("#emailinfoinput").textContent = info[index].email;
+            document.querySelector("#emailinfoinput").href = "mailto:" + info[index].email;
+            document.querySelector("#telinfoinput").textContent = info[index].tel;
+            if (info[index].exper.length == 0) {
+                document.querySelector("#experienceinfoinput").style.display = "none";
+            } else {
+                document.querySelector("#experienceinfoinput").style.display = "flex";
+                document.querySelector("#experiencelistinput").innerHTML = "";
+                for (let ex = 0; ex < info[index].exper.length; ex++) {
+                    document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
+                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                    `)
+                }
+            }
+            document.querySelector("#situationinput").textContent = "This employer in the archive room";
+            document.querySelector("#doneinput").onclick = function () {
+                document.querySelector("#infoputpopup").style.display = "none";
+            }
+            document.querySelector("#delinput").onclick = function () {
+                info[index].situation = false;
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                document.querySelector("#infoputpopup").style.display = "none";
+                location.reload();
+            }
+        });
+    });
+    security.forEach(card => {
+        card.addEventListener("click", (events) => {
+            document.querySelector("#inputpopup").style.display = "flex";
+            if (num == 0) {
+                document.querySelector("#nomsginput").style.display = "flex";
+            } else {
+                for (let i = 0; i < info.length; i++) {
+                    if (info[i].id != 0) {
+                        if (info[i].situation == false && (info[i].role == "Manager" || info[i].role == "Security") ) {
+                            employerinput.insertAdjacentHTML("beforeend", `
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                                <div class="flex gap-2">
+                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <div class="flex flex-col justify-center">
+                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                    </div>
+                                </div>
+                            </div>`
+                            );
+                            if (info[i].url == "") {
+                                if (info[i].gender == "Male") {
+                                    document.querySelector("#profil").src = "img/man.png";
+                                } else {
+                                    document.querySelector("#profil").src = "img/woman.png";
+                                }
+                            } else {
+                                document.querySelector("#profil").src = info[i].url;
+                            }
+                            document.querySelector("#profil").removeAttribute("id");
+                            inputnum++;
+                        } else {
+                            if (info[i].situation != "Manager" || info[i].situation != "Security") {
+                                console.log(info[i].situation)
+                            }
+                        }
+                    }
+                }
+                if (inputnum == 0) {
+                    document.querySelector("#nomsginput").style.display = "flex";
+                }
+                addsecurityemployer();
+            }
+        });
+    });
+    securityed.forEach(card => {
+        card.addEventListener("click", (events) => {
+            chose = events.currentTarget.id;
+            index = info.findIndex(info => info.id + "ed" == chose);
+            document.querySelector("#infoputpopup").style.display = "flex";
+            if (info[index].url == "") {
+                if (info[index].gender == "Male") {
+                    document.querySelector("#profileinput").src = "img/man.png"
+                } else {
+                    document.querySelector("#profileinput").src = "img/woman.png"
+                }
+            } else {
+                document.querySelector("#profileinput").src = info[index].url;
+            }
+            document.querySelector("#nameinfoinput").textContent = info[index].first + " " + info[index].last;
+            document.querySelector("#roleinfoinput").textContent = info[index].role;
+            document.querySelector("#startinfoinput").textContent = info[index].start;
+            document.querySelector("#endinfoinput").textContent = info[index].end;
+            document.querySelector("#emailinfoinput").textContent = info[index].email;
+            document.querySelector("#emailinfoinput").href = "mailto:" + info[index].email;
+            document.querySelector("#telinfoinput").textContent = info[index].tel;
+            if (info[index].exper.length == 0) {
+                document.querySelector("#experienceinfoinput").style.display = "none";
+            } else {
+                document.querySelector("#experienceinfoinput").style.display = "flex";
+                document.querySelector("#experiencelistinput").innerHTML = "";
+                for (let ex = 0; ex < info[index].exper.length; ex++) {
+                    document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
+                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                    `)
+                }
+            }
+            document.querySelector("#situationinput").textContent = "This employer in the security room";
+            document.querySelector("#doneinput").onclick = function () {
+                document.querySelector("#infoputpopup").style.display = "none";
+            }
+            document.querySelector("#delinput").onclick = function () {
+                info[index].situation = false;
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                document.querySelector("#infoputpopup").style.display = "none";
+                location.reload();
+            }
+        });
+    });
+    staff.forEach(card => {
+        card.addEventListener("click", (events) => {
+            document.querySelector("#inputpopup").style.display = "flex";
+            if (num == 0) {
+                document.querySelector("#nomsginput").style.display = "flex";
+            } else {
+                for (let i = 0; i < info.length; i++) {
+                    if (info[i].id != 0) {
+                        if (info[i].situation == false) {
+                            employerinput.insertAdjacentHTML("beforeend", `
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                                <div class="flex gap-2">
+                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <div class="flex flex-col justify-center">
+                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                    </div>
+                                </div>
+                            </div>`
+                            );
+                            if (info[i].url == "") {
+                                if (info[i].gender == "Male") {
+                                    document.querySelector("#profil").src = "img/man.png";
+                                } else {
+                                    document.querySelector("#profil").src = "img/woman.png";
+                                }
+                            } else {
+                                document.querySelector("#profil").src = info[i].url;
+                            }
+                            document.querySelector("#profil").removeAttribute("id");
+                            inputnum++;
+                        } else {
+                            if (info[i].situation != "staff") {
+                                console.log(info[i].situation)
+                            }
+                        }
+                    }
+                }
+                if (inputnum == 0) {
+                    document.querySelector("#nomsginput").style.display = "flex";
+                }
+                addstaffemployer();
+            }
+        });
+    });
+    staffed.forEach(card => {
+        card.addEventListener("click", (events) => {
+            chose = events.currentTarget.id;
+            index = info.findIndex(info => info.id + "ed" == chose);
+            document.querySelector("#infoputpopup").style.display = "flex";
+            if (info[index].url == "") {
+                if (info[index].gender == "Male") {
+                    document.querySelector("#profileinput").src = "img/man.png"
+                } else {
+                    document.querySelector("#profileinput").src = "img/woman.png"
+                }
+            } else {
+                document.querySelector("#profileinput").src = info[index].url;
+            }
+            document.querySelector("#nameinfoinput").textContent = info[index].first + " " + info[index].last;
+            document.querySelector("#roleinfoinput").textContent = info[index].role;
+            document.querySelector("#startinfoinput").textContent = info[index].start;
+            document.querySelector("#endinfoinput").textContent = info[index].end;
+            document.querySelector("#emailinfoinput").textContent = info[index].email;
+            document.querySelector("#emailinfoinput").href = "mailto:" + info[index].email;
+            document.querySelector("#telinfoinput").textContent = info[index].tel;
+            if (info[index].exper.length == 0) {
+                document.querySelector("#experienceinfoinput").style.display = "none";
+            } else {
+                document.querySelector("#experienceinfoinput").style.display = "flex";
+                document.querySelector("#experiencelistinput").innerHTML = "";
+                for (let ex = 0; ex < info[index].exper.length; ex++) {
+                    document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
+                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                    `)
+                }
+            }
+            document.querySelector("#situationinput").textContent = "This employer in the staff room";
+            document.querySelector("#doneinput").onclick = function () {
+                document.querySelector("#infoputpopup").style.display = "none";
+            }
+            document.querySelector("#delinput").onclick = function () {
+                info[index].situation = false;
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                document.querySelector("#infoputpopup").style.display = "none";
+                location.reload();
+            }
+        });
+    });
+    server.forEach(card => {
+        card.addEventListener("click", (events) => {
+            document.querySelector("#inputpopup").style.display = "flex";
+            if (num == 0) {
+                document.querySelector("#nomsginput").style.display = "flex";
+            } else {
+                for (let i = 0; i < info.length; i++) {
+                    if (info[i].id != 0) {
+                        if (info[i].situation == false && (info[i].role == "Manager" || info[i].role == "Technician")) {
+                            employerinput.insertAdjacentHTML("beforeend", `
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                                <div class="flex gap-2">
+                                    <img id="profil" class="w-14 h-14 rounded-full" src="">
+                                    <div class="flex flex-col justify-center">
+                                        <h1 class="text-slate-900 font-bold">${info[i].first} ${info[i].last}</h1>
+                                        <h1 class="text-slate-900">${info[i].role}</h1>
+                                    </div>
+                                </div>
+                            </div>`
+                            );
+                            if (info[i].url == "") {
+                                if (info[i].gender == "Male") {
+                                    document.querySelector("#profil").src = "img/man.png";
+                                } else {
+                                    document.querySelector("#profil").src = "img/woman.png";
+                                }
+                            } else {
+                                document.querySelector("#profil").src = info[i].url;
+                            }
+                            document.querySelector("#profil").removeAttribute("id");
+                            inputnum++;
+                        } else {
+                            if (info[i].situation != "Technician" || info[i].situation != "Security") {
+                                console.log(info[i].situation)
+                            }
+                        }
+                    }
+                }
+                if (inputnum == 0) {
+                    document.querySelector("#nomsginput").style.display = "flex";
+                }
+                addserveremployer();
+            }
+        });
+    });
+    servered.forEach(card => {
+        card.addEventListener("click", (events) => {
+            chose = events.currentTarget.id;
+            index = info.findIndex(info => info.id + "ed" == chose);
+            document.querySelector("#infoputpopup").style.display = "flex";
+            if (info[index].url == "") {
+                if (info[index].gender == "Male") {
+                    document.querySelector("#profileinput").src = "img/man.png"
+                } else {
+                    document.querySelector("#profileinput").src = "img/woman.png"
+                }
+            } else {
+                document.querySelector("#profileinput").src = info[index].url;
+            }
+            document.querySelector("#nameinfoinput").textContent = info[index].first + " " + info[index].last;
+            document.querySelector("#roleinfoinput").textContent = info[index].role;
+            document.querySelector("#startinfoinput").textContent = info[index].start;
+            document.querySelector("#endinfoinput").textContent = info[index].end;
+            document.querySelector("#emailinfoinput").textContent = info[index].email;
+            document.querySelector("#emailinfoinput").href = "mailto:" + info[index].email;
+            document.querySelector("#telinfoinput").textContent = info[index].tel;
+            if (info[index].exper.length == 0) {
+                document.querySelector("#experienceinfoinput").style.display = "none";
+            } else {
+                document.querySelector("#experienceinfoinput").style.display = "flex";
+                document.querySelector("#experiencelistinput").innerHTML = "";
+                for (let ex = 0; ex < info[index].exper.length; ex++) {
+                    document.querySelector("#experiencelistinput").insertAdjacentHTML("beforeend", `
+                        <li class="text-slate-900">${info[index].exper[ex]}</li>
+                    `)
+                }
+            }
+            document.querySelector("#situationinput").textContent = "This employer in the staff room";
+            document.querySelector("#doneinput").onclick = function () {
+                document.querySelector("#infoputpopup").style.display = "none";
+            }
+            document.querySelector("#delinput").onclick = function () {
+                info[index].situation = false;
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                document.querySelector("#infoputpopup").style.display = "none";
+                location.reload();
             }
         });
     });
@@ -374,9 +961,13 @@ if (total == 0) {
                 document.querySelector("#profil").removeAttribute("id");
             } else {
                 document.querySelector(`.${info[i].situation}`).src = info[i].url;
+                document.querySelector(`.${info[i].situation}`).id = info[i].id + "ed";
                 document.querySelector(`.${info[i].situation}`).classList.replace(info[i].situation, info[i].situation + "ed");
             }
         }
+    }
+    if (num == 0) {
+        document.querySelector("#nomsg").style.display = "flex";
     }
     meeting = document.querySelectorAll(".meeting");
     reception = document.querySelectorAll(".reception");
@@ -384,6 +975,12 @@ if (total == 0) {
     security = document.querySelectorAll(".security");
     staff = document.querySelectorAll(".staff");
     server = document.querySelectorAll(".server");
+    meetinged = document.querySelectorAll(".meetinged");
+    receptioned = document.querySelectorAll(".receptioned");
+    archiveed = document.querySelectorAll(".archiveed");
+    securityed = document.querySelectorAll(".securityed");
+    staffed = document.querySelectorAll(".staffed");
+    servered = document.querySelectorAll(".servered");
     document.querySelector("#total").textContent = total;
     document.querySelector("#available").textContent = num;
     turnon();
