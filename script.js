@@ -30,6 +30,12 @@ let num = 0;
 let total = 0;
 let urlput = false;
 let inputnum = 0;
+let search = document.querySelector("#search");
+let searchinput = "";
+let firstsearch = "";
+let lastsearch = "";
+let found = false;
+
 
 function turnon() {
     employers = document.querySelectorAll(".showinfo");
@@ -67,6 +73,10 @@ function turnon() {
             }
             if (info[index].situation == false) {
                 document.querySelector("#situation").textContent = "This employer is absent";
+            } else {
+                if (found) {
+                    document.querySelector("#situation").textContent = `Now in ${info[index].situation} room`;
+                }
             }
             document.querySelector("#done").onclick = function () {
                 document.querySelector("#infopopup").style.display = "none";
@@ -461,7 +471,7 @@ function plusdisplay() {
             } else {
                 for (let i = 0; i < info.length; i++) {
                     if (info[i].id != 0) {
-                        if (info[i].situation == false && (info[i].role == "Manager" || info[i].role == "Security") ) {
+                        if (info[i].situation == false && (info[i].role == "Manager" || info[i].role == "Security")) {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
                                 <div class="flex gap-2">
@@ -722,16 +732,68 @@ function plusdisplay() {
     });
 }
 
+search.onclick = function () {
+    document.querySelector("#searchpopup").style.display = "flex";
+    document.querySelector("#closesearch").onclick = function () {
+        document.querySelector("#searchpopup").style.display = "none";
+        document.querySelector("#searchinput").value = "";
+        document.querySelector("#nomsgsearch").style.display = "none";
+    }
+    document.querySelector("#searchinput").oninput = function () {
+        document.querySelector("#employersearch").innerHTML = "";
+        found = false;
+        for (let hyk = 0; hyk < info.length; hyk++) {
+            searchinput = document.querySelector("#searchinput").value.toLowerCase();
+            firstsearch = info[hyk].first.toLowerCase();
+            lastsearch = info[hyk].last.toLowerCase();
+            if (firstsearch.includes(searchinput) || lastsearch.includes(searchinput)) {
+                found = true;
+                document.querySelector("#nomsgsearch").style.display = "none";
+                document.querySelector("#employersearch").insertAdjacentHTML("beforeend", `
+                    <div id="${info[hyk].id}" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 showinfo">
+                        <div class="flex gap-2">
+                            <img id="profil" class="w-14 h-14 rounded-full" src="">
+                            <div class="flex flex-col justify-center">
+                                <h1 class="text-slate-900 font-bold">${info[hyk].first} ${info[hyk].last}</h1>
+                                <h1 class="text-slate-900">${info[hyk].role}</h1>
+                            </div>
+                        </div>
+                    </div>`
+                );
+                if (info[hyk].url == "") {
+                    if (info[hyk].gender == "Male") {
+                        document.querySelector("#profil").src = "img/man.png";
+                    } else {
+                        document.querySelector("#profil").src = "img/woman.png";
+                    }
+                } else {
+                    document.querySelector("#profil").src = info[hyk].url;
+                }
+                document.querySelector("#profil").removeAttribute("id");
+            }
+            if (found) {
+                document.querySelector("#nomsgsearch").style.display = "none";
+            } else {
+                document.querySelector("#nomsgsearch").style.display = "flex";
+            }
+        }
+        turnon();
+    }
+}
+
 newbtn.onclick = function () {
     document.querySelector("#redmsg").style.display = "none";
     document.querySelector("#newimg").src = "img/man.png";
     document.querySelector("#imginput").style.display = "flex";
     document.querySelector("#experience").style.display = "none";
+    document.querySelector("#reddatemsg").style.display = "none";
     document.querySelector("#urlimg").value = "";
     document.querySelector("#urlimg").value = "";
     document.querySelector("#experinputs").value = "";
     document.querySelector("#imginput").classList.remove("border-red-600");
     document.querySelector("#experinput").classList.remove("border-red-600");
+    start.classList.remove("border-red-600");
+    end.classList.remove("border-red-600");
     document.querySelector("#experience").innerHTML = "";
     gender.classList.remove("border-red-600");
     first.classList.remove("border-red-600");
