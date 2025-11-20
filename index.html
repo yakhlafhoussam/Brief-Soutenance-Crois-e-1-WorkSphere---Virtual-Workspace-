@@ -16,7 +16,7 @@
                 <div class="w-full flex flex-col lg:flex-row gap-4">
                     <div id="imginput" class="bg-white w-full lg:w-[48%] h-8 md:h-12 rounded-full flex justify-between items-center border border-solid">
                         <input id="urlimg" class="w-[80%] h-full rounded-full focus:outline-none pl-3" placeholder="Photo URL" type="text">
-                        <div id="adds" class="bg-green-600 text-white h-full w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl">Add</div>
+                        <div id="adds" class="bg-green-600 text-white h-full w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer">Add</div>
                     </div>
                     <select class="w-full lg:w-[48%] h-8 md:h-12 rounded-full focus:outline-none pl-2 border border-solid" name="Gender" id="gender">
                         <option value="0" disabled selected>Gender</option>
@@ -44,7 +44,7 @@
                     </select>
                     <div id="experinput" class="bg-white w-full lg:w-[48%] h-8 md:h-12 rounded-full flex justify-between items-center border border-solid">
                         <input id="experinputs" class="w-[80%] h-full rounded-full focus:outline-none pl-3" placeholder="Add Experiences" type="text">
-                        <div id="add" class="bg-green-600 text-white h-full w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl">Add</div>
+                        <div id="add" class="bg-green-600 text-white h-full w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer">Add</div>
                     </div>
                 </div>
                 <div id="experience" class="bg-slate-400 w-full rounded-full hidden flex-wrap items-center gap-x-5 lg:gap-x-8 px-8 md:h-12">
@@ -64,8 +64,8 @@
                     </div>
                 </div>
                 <div class="w-full flex justify-center mt-2 gap-2">
-                    <div id="create" class="bg-green-600 text-white h-8 md:h-12 md:text-2xl w-[20%] flex justify-center items-center p-2 rounded-full">Create</div>
-                    <div id="close" class="bg-red-600 text-white h-8 md:h-12 md:text-2xl w-[20%] flex justify-center items-center p-2 rounded-full">Close</div>
+                    <div id="create" class="bg-green-600 text-white h-8 md:h-12 md:text-2xl w-[20%] flex justify-center items-center p-2 rounded-full cursor-pointer hover:scale-105">Create</div>
+                    <div id="close" class="bg-red-600 text-white h-8 md:h-12 md:text-2xl w-[20%] flex justify-center items-center p-2 rounded-full cursor-pointer hover:scale-105">Close</div>
                 </div>
             </div>
         </div>
@@ -97,8 +97,8 @@
                 </div>
             </div>
             <div class="w-full flex justify-center mt-4 gap-2">
-                <div id="done" class="bg-green-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl">Done</div>
-                <div id="del" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl">Delete</div>
+                <div id="done" class="bg-green-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Done</div>
+                <div id="del" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Delete</div>
             </div>
         </div>
     </div>
@@ -129,8 +129,8 @@
                 </div>
             </div>
             <div class="w-full flex justify-center mt-4 gap-2">
-                <div id="doneinput" class="bg-green-600 text-white h-8 md:h-12 w-[35%] flex justify-center items-center p-2 rounded-full md:text-2xl">Done</div>
-                <div id="delinput" class="bg-red-600 text-white h-8 md:h-12 w-[35%] flex justify-center items-center p-2 rounded-full md:text-2xl">Exit this room</div>
+                <div id="doneinput" class="bg-green-600 text-white h-8 md:h-12 w-[35%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Done</div>
+                <div id="delinput" class="bg-red-600 text-white h-8 md:h-12 w-[35%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Exit this room</div>
             </div>
         </div>
     </div>
@@ -141,7 +141,7 @@
             </div>
             <h1 id="nomsginput" class="hidden justify-center text-xl font-bold md:text-2xl">There are no staff to put here</h1>
             <div class="w-full flex justify-center mt-4 gap-2">
-                <div id="closeinput" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl">Close</div>
+                <div id="closeinput" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Close</div>
             </div>
         </div>
     </div>
@@ -153,52 +153,66 @@
             </div>
             <h1 id="nomsgsearch" class="hidden justify-center font-bold md:text-2xl">There are no employees with these standards</h1>
             <div class="w-full flex justify-center mt-4 gap-2">
-                <div id="closesearch" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl">Close</div>
+                <div id="closesearch" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Close</div>
+            </div>
+        </div>
+    </div>
+    <div id="trashpopup" class="hidden fixed inset-0 bg-black/50 z-[9990] justify-center items-center">
+        <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col items-center">
+            <div id="employertrash" class="w-full max-h-80 flex flex-col items-center gap-2 overflow-y-scroll mt-2">
+                
+            </div>
+            <h1 id="nomsgtrash" class="hidden justify-center font-bold md:text-2xl">There are no employees in your trash</h1>
+            <div class="w-full flex justify-center mt-4 gap-2">
+                <div id="closetrash" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Close</div>
             </div>
         </div>
     </div>
     <div class="w-full h-16 flex items-center justify-between px-5 bg-slate-300">
         <h1 class="text-xl font-bold text-slate-800 md:text-2xl">WorkSphere</h1>
-        <img id="search" class="w-8" src="img/search.png">
+        <div class="flex gap-2">
+            <img id="trash" class="w-8 cursor-pointer hover:scale-105" src="img/trash.png">
+            <img id="search" class="w-8 cursor-pointer hover:scale-105" src="img/search.png">
+        </div>
     </div>
     <div class="flex flex-col lg:flex-row-reverse justify-between items-center h-screen pt-10 lg:pt-0 lg:pr-10">
     <div class="bg-[url('img/plan.jpg')] bg-[length:100%_100%] bg-no-repeat w-[90%] lg:w-[70%] h-[40%] lg:h-[70%]  md:h-2/5 flex justify-between">
         <div class="w-[38%] h-full flex flex-col justify-between">
             <div class="w-full h-[33%] flex flex-col">
                 <div class="w-full h-[38%] flex justify-center items-end gap-[6%]">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                 </div>
                 <div class="w-full h-[38%] flex justify-center items-center gap-[40%]">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                 </div>
                 <div class="w-full h-[24%] flex justify-center gap-[6%]">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                 </div>
             </div>
             <div id="receptionroom" class="w-full h-[66%]">
                 <div class="w-full h-[23%] flex justify-end items-end pr-[24%]">
-                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                 </div>
                 <div class="w-[45%] h-[15%] flex items-center">
                     <div class="w-[42%] h-full flex justify-end items-end">
-                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                     </div>
                     <div class="w-[58%] flex justify-around">
-                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                     </div>
                 </div>
                 <div class="w-[20%] h-[30%] flex flex-col justify-around items-center">
-                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                 </div>
                 <div class="w-[20%] h-[20%] flex flex-col justify-around items-center">
-                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                 </div>
             </div>
         </div>
@@ -207,43 +221,43 @@
             <div class="w-full h-[35%] flex">
                 <div id="archiveroom" class="w-1/2 h-full flex justify-around">
                     <div class="h-full w-[30%] flex flex-col justify-around items-center">
-                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                     </div>
                     <div class="h-full w-[30%] flex flex-col justify-around items-start">
-                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                     </div>
                 </div>
                 <div id="securityroom" class="w-1/2 h-full flex justify-center items-center">
                     <div class="w-11/12 flex justify-center flex-wrap gap-4">
-                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                     </div>
                 </div>
             </div>
             <div class="w-full h-[35%] flex">
                 <div class="w-1/2 h-full flex justify-center items-center">
                     <div class="w-full flex justify-center flex-wrap gap-2">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                     </div>
                 </div>
                 <div id="serverroom" class="w-1/2 h-full flex justify-center items-center">
-                    <img class="server w-4 h-4 md:w-8 md:h-8 rounded-full" src="img/plus.png">
+                    <img class="server w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
                 </div>
             </div>
         </div>
     </div>
     <div class="flex flex-col items-center w-full lg:w-3/12 h-1/2 lg:h-full bg-slate-300 rounded-t-3xl">
         <div class="bg-slate-300 w-full h-10 md:h-16 flex justify-between items-center p-5">
-            <h1 id="new" class="bg-green-600 flex justify-center items-center text-white rounded-full px-2 md:text-2xl">+ New</h1>
+            <h1 id="new" class="bg-green-600 flex justify-center items-center text-white rounded-full px-2 md:text-2xl cursor-pointer hover:scale-105">+ New</h1>
             <div id="number" class="flex">
                 <h1 id="available" class="flex justify-center items-center px-2 text-xl md:text-2xl">5</h1><p class="text-xl md:text-2xl">/</p><h1 id="total" class="flex justify-center items-center px-2 text-xl md:text-2xl">5</h1>
             </div>

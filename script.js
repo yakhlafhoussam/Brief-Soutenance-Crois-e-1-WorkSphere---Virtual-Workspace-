@@ -31,6 +31,7 @@ let total = 0;
 let urlput = false;
 let inputnum = 0;
 let search = document.querySelector("#search");
+let trash = document.querySelector("#trash");
 let searchinput = "";
 let firstsearch = "";
 let lastsearch = "";
@@ -42,6 +43,60 @@ let servernum;
 
 
 function turnon() {
+    employers = document.querySelectorAll(".showinfo");
+    employers.forEach(card => {
+        card.addEventListener("click", (events) => {
+            chose = Number(events.currentTarget.id);
+            index = info.findIndex(info => info.id === chose);
+            document.querySelector("#infopopup").style.display = "flex";
+            if (info[index].url == "") {
+                if (info[index].gender == "Male") {
+                    document.querySelector("#profile").src = "img/man.png"
+                } else {
+                    document.querySelector("#profile").src = "img/woman.png"
+                }
+            } else {
+                document.querySelector("#profile").src = info[index].url;
+            }
+            document.querySelector("#nameinfo").textContent = info[index].first + " " + info[index].last;
+            document.querySelector("#roleinfo").textContent = info[index].role;
+            document.querySelector("#startinfo").textContent = info[index].start;
+            document.querySelector("#endinfo").textContent = info[index].end;
+            document.querySelector("#emailinfo").textContent = info[index].email;
+            document.querySelector("#emailinfo").href = "mailto:" + info[index].email;
+            document.querySelector("#telinfo").textContent = info[index].tel;
+            if (info[index].exper.length == 0) {
+                document.querySelector("#experienceinfo").style.display = "none";
+            } else {
+                document.querySelector("#experienceinfo").style.display = "flex";
+                document.querySelector("#experiencelist").innerHTML = "";
+                for (let ex = 0; ex < info[index].exper.length; ex++) {
+                    document.querySelector("#experiencelist").insertAdjacentHTML("beforeend", `
+                        <li class="text-slate-900 md:text-2xl">${info[index].exper[ex]}</li>
+                    `)
+                }
+            }
+            if (info[index].situation == false) {
+                document.querySelector("#situation").textContent = "This employer is absent";
+            } else {
+                if (found) {
+                    document.querySelector("#situation").textContent = `Now in ${info[index].situation} room`;
+                }
+            }
+            document.querySelector("#done").onclick = function () {
+                document.querySelector("#infopopup").style.display = "none";
+            }
+            document.querySelector("#del").onclick = function () {
+                info[index].id = 0;
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                document.querySelector("#infopopup").style.display = "none";
+                location.reload();
+            }
+        });
+    });
+}
+
+function trashon() {
     employers = document.querySelectorAll(".showinfo");
     employers.forEach(card => {
         card.addEventListener("click", (events) => {
@@ -212,7 +267,7 @@ function plusdisplay() {
                     if (info[i].id != 0) {
                         if (info[i].situation == false) {
                             employerinput.insertAdjacentHTML("beforeend", `
-                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
                                     <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
@@ -297,7 +352,7 @@ function plusdisplay() {
                     if (info[i].id != 0) {
                         if (info[i].situation == false && info[i].role == "Manager" || info[i].situation == false && info[i].role == "Receptionist") {
                             employerinput.insertAdjacentHTML("beforeend", `
-                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
                                     <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
@@ -386,7 +441,7 @@ function plusdisplay() {
                     if (info[i].id != 0) {
                         if (info[i].situation == false && info[i].role != "Cleaner") {
                             employerinput.insertAdjacentHTML("beforeend", `
-                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
                                     <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
@@ -475,7 +530,7 @@ function plusdisplay() {
                     if (info[i].id != 0) {
                         if (info[i].situation == false && (info[i].role == "Manager" || info[i].role == "Security")) {
                             employerinput.insertAdjacentHTML("beforeend", `
-                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
                                     <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
@@ -564,7 +619,7 @@ function plusdisplay() {
                     if (info[i].id != 0) {
                         if (info[i].situation == false) {
                             employerinput.insertAdjacentHTML("beforeend", `
-                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
                                     <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
@@ -653,7 +708,7 @@ function plusdisplay() {
                     if (info[i].id != 0) {
                         if (info[i].situation == false && (info[i].role == "Manager" || info[i].role == "Technician")) {
                             employerinput.insertAdjacentHTML("beforeend", `
-                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 added">
+                            <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
                                     <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                                     <div class="flex flex-col justify-center">
@@ -748,11 +803,11 @@ search.onclick = function () {
             searchinput = document.querySelector("#searchinput").value.toLowerCase();
             firstsearch = info[hyk].first.toLowerCase();
             lastsearch = info[hyk].last.toLowerCase();
-            if (firstsearch.includes(searchinput) || lastsearch.includes(searchinput)) {
+            if (firstsearch.includes(searchinput) || lastsearch.includes(searchinput) || (firstsearch + " " + lastsearch).includes(searchinput)) {
                 found = true;
                 document.querySelector("#nomsgsearch").style.display = "none";
                 document.querySelector("#employersearch").insertAdjacentHTML("beforeend", `
-                    <div id="${info[hyk].id}" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 showinfo">
+                    <div id="${info[hyk].id}" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer showinfo">
                         <div class="flex gap-2">
                             <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                             <div class="flex flex-col justify-center">
@@ -781,6 +836,48 @@ search.onclick = function () {
         }
         turnon();
     }
+}
+
+trash.onclick = function () {
+    document.querySelector("#trashpopup").style.display = "flex";
+    document.querySelector("#closetrash").onclick = function () {
+        document.querySelector("#trashpopup").style.display = "none";
+        document.querySelector("#nomsgtrach").style.display = "none";
+    }
+        found = false;
+        for (let hyk = 0; hyk < info.length; hyk++) {
+            if (info[hyk].id == 0) {
+                found = true;
+                document.querySelector("#nomsgtrash").style.display = "none";
+                document.querySelector("#employertrash").insertAdjacentHTML("beforeend", `
+                    <div id="${info[hyk].id}" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer showinfo">
+                        <div class="flex gap-2">
+                            <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                            <div class="flex flex-col justify-center">
+                                <h1 class="text-slate-900 font-bold md:text-2xl">${info[hyk].first} ${info[hyk].last}</h1>
+                                <h1 class="text-slate-900 md:text-2xl">${info[hyk].role}</h1>
+                            </div>
+                        </div>
+                    </div>`
+                );
+                if (info[hyk].url == "") {
+                    if (info[hyk].gender == "Male") {
+                        document.querySelector("#profil").src = "img/man.png";
+                    } else {
+                        document.querySelector("#profil").src = "img/woman.png";
+                    }
+                } else {
+                    document.querySelector("#profil").src = info[hyk].url;
+                }
+                document.querySelector("#profil").removeAttribute("id");
+            }
+            if (found) {
+                document.querySelector("#nomsgtrash").style.display = "none";
+            } else {
+                document.querySelector("#nomsgtrash").style.display = "flex";
+            }
+        }
+        trashon();
 }
 
 newbtn.onclick = function () {
@@ -1003,7 +1100,7 @@ if (total == 0) {
             if (info[i].situation == false) {
                 num++;
                 employerplay.insertAdjacentHTML("beforeend", `
-                    <div id="${info[i].id}" class="bg-slate-400 w-full py-2 rounded-full flex items-center justify-between px-3 showinfo">
+                    <div id="${info[i].id}" class="bg-slate-400 w-full py-2 rounded-full flex items-center justify-between px-3 cursor-pointer showinfo">
                         <div class="flex gap-2">
                             <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                             <div class="flex flex-col justify-center">
