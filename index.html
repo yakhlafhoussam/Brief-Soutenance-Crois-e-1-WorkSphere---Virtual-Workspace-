@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkSphere</title>
+    <link rel="icon" href="img/icon.png">
+    <link href="./output.css" rel="stylesheet">
+</head>
+<body class="bg-slate-600">
+    <div id="popup" class="hidden fixed inset-0 bg-black/50 z-[9999] justify-center items-center">
+        <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
+            <div class="mt-4 w-full px-4 flex flex-col items-center gap-4">
+                <h1 id="redmsg" class="hidden text-red-600 font-bold md:text-2xl">Please fill in the required fields</h1>
+                <img id="newimg" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png" alt="">
+                <div class="w-full flex flex-col lg:flex-row gap-4">
+                    <div id="imginput" class="bg-white w-full lg:w-[48%] h-8 md:h-12 rounded-full flex justify-between items-center border border-solid">
+                        <input id="urlimg" class="w-[80%] h-full rounded-full focus:outline-none pl-3" placeholder="Photo URL" type="text">
+                        <div id="adds" class="bg-green-600 text-white h-full w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer">Add</div>
+                    </div>
+                    <select class="w-full lg:w-[48%] h-8 md:h-12 rounded-full focus:outline-none pl-2 border border-solid" name="Gender" id="gender">
+                        <option value="0" disabled selected>Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </div>
+                <div class="w-full flex flex-col lg:flex-row gap-4">
+                    <input id="first" class="w-full lg:w-[48%] h-8 md:h-12 rounded-full focus:outline-none pl-3 border border-solid" placeholder="First Name" type="text">
+                    <input id="last" class="w-full lg:w-[48%] h-8 md:h-12 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Last Name" type="text">
+                </div>
+                <div class="w-full flex flex-col lg:flex-row gap-4">
+                    <input id="email" class="w-full lg:w-[48%] h-8 md:h-12 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Email" type="text">
+                    <input id="tel" class="w-full lg:w-[48%] h-8 md:h-12 rounded-full focus:outline-none pl-3 border border-solid" placeholder="Tel" type="tel">
+                </div>
+                <div class="w-full flex flex-col lg:flex-row gap-4">
+                    <select id="role" class="w-full lg:w-[48%] h-8 md:h-12 rounded-full focus:outline-none pl-2 border border-solid" name="Role">
+                        <option value="0" disabled selected>Role</option>
+                        <option value="Receptionist">Receptionist</option>
+                        <option value="Technician">IT Technician</option>
+                        <option value="Security">Security guard</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Cleaner">Cleaner</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div id="experinput" class="bg-white w-full lg:w-[48%] h-8 md:h-12 rounded-full flex justify-between items-center border border-solid">
+                        <input id="experinputs" class="w-[80%] h-full rounded-full focus:outline-none pl-3" placeholder="Add Experiences" type="text">
+                        <div id="add" class="bg-green-600 text-white h-full w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer">Add</div>
+                    </div>
+                </div>
+                <div id="experience" class="bg-slate-400 w-full rounded-full hidden flex-wrap items-center gap-x-5 lg:gap-x-8 px-8 md:h-12">
+                    
+                </div>
+                <div class="w-full flex flex-col items-center">
+                    <h1 id="reddatemsg" class="hidden text-red-600 font-bold text-xs md:text-xl">The start date must be earlier than the end date</h1>
+                    <div class="w-full flex justify-center items-center gap-x-1">
+                        <div class="w-1/2 lg:lg:w-[48%] flex flex-col items-center">
+                            <h1 class="text-slate-900 font-bold md:text-2xl">Start</h1>
+                            <input id="start" class="w-full h-8 md:h-12 rounded-full focus:outline-none pl-3 border border-solid md:text-2xl" value="" type="date">
+                        </div>
+                        <div class="w-1/2 lg:lg:w-[48%] flex flex-col items-center">
+                            <h1 class="text-slate-900 font-bold md:text-2xl">End</h1>
+                            <input id="end" class="w-full h-8 md:h-12 rounded-full focus:outline-none pl-3 border border-solid md:text-2xl" value="" type="date">
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full flex justify-center mt-2 gap-2">
+                    <div id="create" class="bg-green-600 text-white h-8 md:h-12 md:text-2xl w-[20%] flex justify-center items-center p-2 rounded-full cursor-pointer hover:scale-105">Create</div>
+                    <div id="close" class="bg-red-600 text-white h-8 md:h-12 md:text-2xl w-[20%] flex justify-center items-center p-2 rounded-full cursor-pointer hover:scale-105">Close</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="infopopup" class="hidden fixed inset-0 bg-black/50 z-[9999] justify-center items-center">
+        <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
+            <div class="mt-4 w-full px-4 flex flex-col items-center gap-3">
+                <img id="profile" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png">
+                <h1 id="nameinfo" class="text-slate-900 font-bold md:text-2xl">Houssam YAKHLAF</h1>
+                <h1 id="roleinfo" class="text-slate-900 md:text-2xl">Developer</h1>
+                <a id="emailinfo" href="" class="text-slate-900 md:text-2xl">yakhlafhoussam@gmail.com</a>
+                <h1 id="telinfo" class="text-slate-900 md:text-2xl">06 15 94 06 05</h1>
+                <div id="experienceinfo" class="bg-slate-400 w-full rounded-full flex flex-col justify-between items-center px-8 py-2">
+                    <h1 class="text-slate-900 md:text-2xl">Experience</h1>
+                    <div id="experiencelist" class="w-full flex flex-wrap justify-center gap-8">
+                        
+                    </div>
+                </div>
+                <div class="w-1/2 flex justify-around">
+                    <h1 class="text-slate-900 font-bold md:text-2xl">Start :</h1>
+                    <p id="startinfo" class="md:text-2xl">2006-06-17</p>
+                </div>
+                <div class="w-1/2 flex justify-around">
+                    <h1 class="text-slate-900 font-bold md:text-2xl">End :</h1>
+                    <p id="endinfo" class="md:text-2xl">2025-11-18</p>
+                </div>
+                <div class="flex gap-1">
+                    <h1 id="situation" class="text-slate-900 md:text-2xl">Now in</h1>
+                </div>
+            </div>
+            <div class="w-full flex justify-center mt-4 gap-2">
+                <div id="done" class="bg-green-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Done</div>
+                <div id="del" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Delete</div>
+            </div>
+        </div>
+    </div>
+    <div id="infoputpopup" class="hidden fixed inset-0 bg-black/50 z-[9999] justify-center items-center">
+        <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
+            <div class="mt-4 w-full px-4 flex flex-col items-center gap-3">
+                <img id="profileinput" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png">
+                <h1 id="nameinfoinput" class="text-slate-900 font-bold md:text-2xl">Houssam YAKHLAF</h1>
+                <h1 id="roleinfoinput" class="text-slate-900 md:text-2xl">Developer</h1>
+                <a id="emailinfoinput" href="" class="text-slate-900 md:text-2xl">yakhlafhoussam@gmail.com</a>
+                <h1 id="telinfoinput" class="text-slate-900 md:text-2xl">06 15 94 06 05</h1>
+                <div id="experienceinfoinput" class="bg-slate-400 w-full rounded-full flex flex-col justify-between items-center px-8 py-2">
+                    <h1 class="text-slate-900 md:text-2xl">Experience</h1>
+                    <div id="experiencelistinput" class="w-full flex flex-wrap justify-center gap-8">
+                        
+                    </div>
+                </div>
+                <div class="w-1/2 flex justify-around">
+                    <h1 class="text-slate-900 font-bold md:text-2xl">Start :</h1>
+                    <p id="startinfoinput" class="md:text-2xl">2006-06-17</p>
+                </div>
+                <div class="w-1/2 flex justify-around">
+                    <h1 class="text-slate-900 font-bold md:text-2xl">End :</h1>
+                    <p id="endinfoinput" class="md:text-2xl">2025-11-18</p>
+                </div>
+                <div class="flex gap-1">
+                    <h1 id="situationinput" class="text-slate-900 md:text-2xl">Now in</h1>
+                </div>
+            </div>
+            <div class="w-full flex justify-center mt-4 gap-2">
+                <div id="doneinput" class="bg-green-600 text-white h-8 md:h-12 w-[35%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Done</div>
+                <div id="delinput" class="bg-red-600 text-white h-8 md:h-12 w-[35%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Exit this room</div>
+            </div>
+        </div>
+    </div>
+    <div id="inputpopup" class="hidden fixed inset-0 bg-black/50 z-[9999] justify-center items-center">
+        <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
+            <div id="employerinput" class="w-full max-h-72 flex flex-col items-center gap-2 overflow-y-scroll">
+                
+            </div>
+            <h1 id="nomsginput" class="hidden justify-center text-xl font-bold md:text-2xl">There are no staff to put here</h1>
+            <div class="w-full flex justify-center mt-4 gap-2">
+                <div id="closeinput" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Close</div>
+            </div>
+        </div>
+    </div>
+    <div id="searchpopup" class="hidden fixed inset-0 bg-black/50 z-[9990] justify-center items-center">
+        <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col items-center">
+            <input id="searchinput" class="w-11/12 h-8 md:h-12 rounded-full focus:outline-none pl-3 border border-solid md:text-2xl" placeholder="searching..." type="text">
+            <div id="employersearch" class="w-full max-h-80 flex flex-col items-center gap-2 overflow-y-scroll mt-2">
+                
+            </div>
+            <h1 id="nomsgsearch" class="hidden justify-center font-bold md:text-2xl">There are no employees with these standards</h1>
+            <div class="w-full flex justify-center mt-4 gap-2">
+                <div id="closesearch" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Close</div>
+            </div>
+        </div>
+    </div>
+    <div id="trashpopup" class="hidden fixed inset-0 bg-black/50 z-[9990] justify-center items-center">
+        <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col items-center">
+            <div id="employertrash" class="w-full max-h-80 flex flex-col items-center gap-2 overflow-y-scroll mt-2">
+                
+            </div>
+            <h1 id="nomsgtrash" class="hidden justify-center font-bold md:text-2xl">There are no employees in your trash</h1>
+            <div class="w-full flex justify-center mt-4 gap-2">
+                <div id="closetrash" class="bg-red-600 text-white h-8 md:h-12 w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105">Close</div>
+            </div>
+        </div>
+    </div>
+    <div class="w-full h-16 flex items-center justify-between px-5 bg-slate-300">
+        <h1 class="text-xl font-bold text-slate-800 md:text-2xl">WorkSphere</h1>
+        <div class="flex gap-2">
+            <img id="trash" class="w-8 cursor-pointer hover:scale-105" src="img/trash.png">
+            <img id="search" class="w-8 cursor-pointer hover:scale-105" src="img/search.png">
+        </div>
+    </div>
+    <div class="flex flex-col lg:flex-row-reverse justify-between items-center h-screen pt-10 lg:pt-0 lg:pr-10">
+    <div class="bg-[url('img/plan.jpg')] bg-[length:100%_100%] bg-no-repeat w-[90%] lg:w-[70%] h-[40%] lg:h-[70%]  md:h-2/5 flex justify-between">
+        <div class="w-[38%] h-full flex flex-col justify-between">
+            <div class="w-full h-[33%] flex flex-col">
+                <div class="w-full h-[38%] flex justify-center items-end gap-[6%]">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                </div>
+                <div class="w-full h-[38%] flex justify-center items-center gap-[40%]">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                </div>
+                <div class="w-full h-[24%] flex justify-center gap-[6%]">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                </div>
+            </div>
+            <div id="receptionroom" class="w-full h-[66%]">
+                <div class="w-full h-[23%] flex justify-end items-end pr-[24%]">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                </div>
+                <div class="w-[45%] h-[15%] flex items-center">
+                    <div class="w-[42%] h-full flex justify-end items-end">
+                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    </div>
+                    <div class="w-[58%] flex justify-around">
+                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    </div>
+                </div>
+                <div class="w-[20%] h-[30%] flex flex-col justify-around items-center">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                </div>
+                <div class="w-[20%] h-[20%] flex flex-col justify-around items-center">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                </div>
+            </div>
+        </div>
+
+        <div class="w-[45%] h-full flex flex-col justify-between">
+            <div class="w-full h-[35%] flex">
+                <div id="archiveroom" class="w-1/2 h-full flex justify-around">
+                    <div class="h-full w-[30%] flex flex-col justify-around items-center">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    </div>
+                    <div class="h-full w-[30%] flex flex-col justify-around items-start">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    </div>
+                </div>
+                <div id="securityroom" class="w-1/2 h-full flex justify-center items-center">
+                    <div class="w-11/12 flex justify-center flex-wrap gap-4">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[35%] flex">
+                <div class="w-1/2 h-full flex justify-center items-center">
+                    <div class="w-full flex justify-center flex-wrap gap-2">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    </div>
+                </div>
+                <div id="serverroom" class="w-1/2 h-full flex justify-center items-center">
+                    <img class="server w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col items-center w-full lg:w-3/12 h-1/2 lg:h-full bg-slate-300 rounded-t-3xl">
+        <div class="bg-slate-300 w-full h-10 md:h-16 flex justify-between items-center p-5">
+            <h1 id="new" class="bg-green-600 flex justify-center items-center text-white rounded-full px-2 md:text-2xl cursor-pointer hover:scale-105">+ New</h1>
+            <div id="number" class="flex">
+                <h1 id="available" class="flex justify-center items-center px-2 text-xl md:text-2xl">5</h1><p class="text-xl md:text-2xl">/</p><h1 id="total" class="flex justify-center items-center px-2 text-xl md:text-2xl">5</h1>
+            </div>
+        </div>
+        <div id="employerplay" class="w-11/12 min-h-24 flex flex-col gap-2 pb-2 overflow-y-scroll no-scrollbar">
+            <h1 id="nomsg" class="hidden justify-center text-xl font-bold md:text-3xl">There are no non-assigned staff</h1>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
