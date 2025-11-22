@@ -42,7 +42,8 @@ let archivenum;
 let securitynum;
 let servernum;
 let bigid = 0;
-
+let startex;
+let endex;
 
 function turnon() {
     employers = document.querySelectorAll(".showinfo");
@@ -942,13 +943,48 @@ document.querySelector("#add").onclick = function () {
             repeat: 3,
         });
     } else {
-        document.querySelector("#experinput").classList.remove("border-red-600");
-        newinfo.exper.push(document.querySelector("#experinputs").value);
-        document.querySelector("#experience").insertAdjacentHTML("beforeend", `
-            <li class="text-slate-900 md:text-2xl">${document.querySelector("#experinputs").value}</li>`
-        );
-        document.querySelector("#experinputs").value = "";
-        document.querySelector("#experience").style.display = "flex";
+        document.querySelector("#experdate").style.display = "flex";
+        document.querySelector("#adddateex").onclick = function () {
+            if (document.querySelector("#experdateinputs").value == "") {
+                document.querySelector("#experdate").classList.add("border-red-600");
+                gsap.to("#experdate", {
+                    x: 3,
+                    duration: 0.05,
+                    yoyo: true,
+                    repeat: 3,
+                });
+            } else {
+                startex = document.querySelector("#experdateinputs").value;
+                document.querySelector("#experdateinputs").value = "";
+                document.querySelector("#experdateinputs").placeholder = "To"
+                document.querySelector("#adddateex").textContent = "Add"
+                document.querySelector("#adddateex").onclick = function () {
+                    if (document.querySelector("#experdateinputs").value == "" || document.querySelector("#experdateinputs").value < startex) {
+                        document.querySelector("#experdate").classList.add("border-red-600");
+                        gsap.to("#experdate", {
+                            x: 3,
+                            duration: 0.05,
+                            yoyo: true,
+                            repeat: 3,
+                        });
+                    } else {
+                        document.querySelector("#experdate").style.display = "none";
+                        endex = document.querySelector("#experdateinputs").value;
+                        document.querySelector("#experinput").classList.remove("border-red-600");
+                        document.querySelector("#experdateinputs").classList.remove("border-red-600");
+                        document.querySelector("#experdateinputs").value = "";
+                        document.querySelector("#experdateinputs").placeholder = "From"
+                        document.querySelector("#adddateex").textContent = "To"
+                        newinfo.exper.push(document.querySelector("#experinputs").value + " :" + ` ${startex}/${endex}`);
+                        document.querySelector("#experience").insertAdjacentHTML("beforeend", `
+                            <li class="text-slate-900 md:text-2xl">${document.querySelector("#experinputs").value} : ${startex}/${endex}</li>`
+                        );
+                        document.querySelector("#experinputs").value = "";
+                        document.querySelector("#experience").style.display = "flex";
+                    }
+                }
+            }
+        }
     }
 }
 document.querySelector("#create").onclick = function () {
