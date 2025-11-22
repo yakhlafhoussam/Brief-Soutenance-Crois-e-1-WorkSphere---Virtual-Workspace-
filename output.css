@@ -570,16 +570,16 @@ video {
   z-index: 9999;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
 }
 
 .flex {
@@ -1028,6 +1028,10 @@ video {
 }
 
 @media (min-width: 768px) {
+  .md\:h-10 {
+    height: 2.5rem;
+  }
+
   .md\:h-12 {
     height: 3rem;
   }
@@ -1046,10 +1050,6 @@ video {
 
   .md\:h-8 {
     height: 2rem;
-  }
-
-  .md\:h-10 {
-    height: 2.5rem;
   }
 
   .md\:w-28 {
