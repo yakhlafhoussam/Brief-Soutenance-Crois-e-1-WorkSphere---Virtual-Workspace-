@@ -24,6 +24,7 @@ let securityed;
 let staffed;
 let servered;
 let employers;
+let employerstrash;
 let chose;
 let index;
 let num = 0;
@@ -40,6 +41,7 @@ let receptionnum;
 let archivenum;
 let securitynum;
 let servernum;
+let bigid = 0;
 
 
 function turnon() {
@@ -97,54 +99,55 @@ function turnon() {
 }
 
 function trashon() {
-    employers = document.querySelectorAll(".showinfo");
-    employers.forEach(card => {
+    employerstrash = document.querySelectorAll(".recycling");
+    employerstrash.forEach(card => {
         card.addEventListener("click", (events) => {
             chose = Number(events.currentTarget.id);
-            index = info.findIndex(info => info.id === chose);
-            document.querySelector("#infopopup").style.display = "flex";
-            if (info[index].url == "") {
-                if (info[index].gender == "Male") {
-                    document.querySelector("#profile").src = "img/man.png"
+            document.querySelector("#recyclingpopup").style.display = "flex";
+            if (info[chose].url == "") {
+                if (info[chose].gender == "Male") {
+                    document.querySelector("#profilrecycling").src = "img/man.png"
                 } else {
-                    document.querySelector("#profile").src = "img/woman.png"
+                    document.querySelector("#profilrecycling").src = "img/woman.png"
                 }
             } else {
-                document.querySelector("#profile").src = info[index].url;
+                document.querySelector("#profilrecycling").src = info[chose].url;
             }
-            document.querySelector("#nameinfo").textContent = info[index].first + " " + info[index].last;
-            document.querySelector("#roleinfo").textContent = info[index].role;
-            document.querySelector("#startinfo").textContent = info[index].start;
-            document.querySelector("#endinfo").textContent = info[index].end;
-            document.querySelector("#emailinfo").textContent = info[index].email;
-            document.querySelector("#emailinfo").href = "mailto:" + info[index].email;
-            document.querySelector("#telinfo").textContent = info[index].tel;
-            if (info[index].exper.length == 0) {
-                document.querySelector("#experienceinfo").style.display = "none";
+            document.querySelector("#namerecycling").textContent = info[chose].first + " " + info[chose].last;
+            document.querySelector("#rolerecycling").textContent = info[chose].role;
+            document.querySelector("#startrecycling").textContent = info[chose].start;
+            document.querySelector("#endrecycling").textContent = info[chose].end;
+            document.querySelector("#emailrecycling").textContent = info[chose].email;
+            document.querySelector("#emailrecycling").href = "mailto:" + info[chose].email;
+            document.querySelector("#telrecycling").textContent = info[chose].tel;
+            if (info[chose].exper.length == 0) {
+                document.querySelector("#experiencerecycling").style.display = "none";
             } else {
-                document.querySelector("#experienceinfo").style.display = "flex";
-                document.querySelector("#experiencelist").innerHTML = "";
-                for (let ex = 0; ex < info[index].exper.length; ex++) {
-                    document.querySelector("#experiencelist").insertAdjacentHTML("beforeend", `
-                        <li class="text-slate-900 md:text-2xl">${info[index].exper[ex]}</li>
+                document.querySelector("#experiencerecycling").style.display = "flex";
+                document.querySelector("#experiencelist_recycling").innerHTML = "";
+                for (let ex = 0; ex < info[chose].exper.length; ex++) {
+                    document.querySelector("#experiencelist_recycling").insertAdjacentHTML("beforeend", `
+                        <li class="text-slate-900 md:text-2xl">${info[chose].exper[ex]}</li>
                     `)
                 }
             }
-            if (info[index].situation == false) {
-                document.querySelector("#situation").textContent = "This employer is absent";
-            } else {
-                if (found) {
-                    document.querySelector("#situation").textContent = `Now in ${info[index].situation} room`;
+            document.querySelector("#recycling").onclick = function () {
+                for (let i = 0; i < info.length; i++) {
+                    if (info[i].id > bigid) {
+                        bigid = info[i].id;
+                    }
                 }
-            }
-            document.querySelector("#done").onclick = function () {
-                document.querySelector("#infopopup").style.display = "none";
-            }
-            document.querySelector("#del").onclick = function () {
-                info[index].id = 0;
+                info[chose].id = bigid + 1;
                 window.localStorage.setItem("employer", JSON.stringify(info));
-                document.querySelector("#infopopup").style.display = "none";
                 location.reload();
+            }
+            document.querySelector("#deletedpermanently").onclick = function () {
+                info.splice(chose, 1);
+                window.localStorage.setItem("employer", JSON.stringify(info));
+                location.reload();
+            }
+            document.querySelector("#closetrashinfo").onclick = function () {
+                document.querySelector("#recyclingpopup").style.display = "none";
             }
         });
     });
@@ -153,14 +156,14 @@ function trashon() {
 function addemployer() {
     document.querySelectorAll(".added").forEach(carded => {
         carded.addEventListener("click", (eventsed) => {
-                chose = eventsed.currentTarget.id;
-                index = info.findIndex(info => info.id + "ed" == chose);
-                document.querySelector(".meeting").src = info[index].url;
-                info[index].situation = "meeting";
-                window.localStorage.setItem("employer", JSON.stringify(info));
-                location.reload();
-                document.querySelector("#inputpopup").style.display = "none";
-                chose = 0;
+            chose = eventsed.currentTarget.id;
+            index = info.findIndex(info => info.id + "ed" == chose);
+            document.querySelector(".meeting").src = info[index].url;
+            info[index].situation = "meeting";
+            window.localStorage.setItem("employer", JSON.stringify(info));
+            location.reload();
+            document.querySelector("#inputpopup").style.display = "none";
+            chose = 0;
         });
     });
 }
@@ -803,7 +806,7 @@ search.onclick = function () {
             searchinput = document.querySelector("#searchinput").value.toLowerCase();
             firstsearch = info[hyk].first.toLowerCase();
             lastsearch = info[hyk].last.toLowerCase();
-            if (firstsearch.includes(searchinput) || lastsearch.includes(searchinput) || (firstsearch + " " + lastsearch).includes(searchinput)) {
+            if ((firstsearch.includes(searchinput) || lastsearch.includes(searchinput) || (firstsearch + " " + lastsearch).includes(searchinput)) && info[hyk].id != 0) {
                 found = true;
                 document.querySelector("#nomsgsearch").style.display = "none";
                 document.querySelector("#employersearch").insertAdjacentHTML("beforeend", `
@@ -842,15 +845,16 @@ trash.onclick = function () {
     document.querySelector("#trashpopup").style.display = "flex";
     document.querySelector("#closetrash").onclick = function () {
         document.querySelector("#trashpopup").style.display = "none";
-        document.querySelector("#nomsgtrach").style.display = "none";
+        document.querySelector("#nomsgtrash").style.display = "none";
+        document.querySelector("#employertrash").innerHTML = "";
     }
-        found = false;
-        for (let hyk = 0; hyk < info.length; hyk++) {
-            if (info[hyk].id == 0) {
-                found = true;
-                document.querySelector("#nomsgtrash").style.display = "none";
-                document.querySelector("#employertrash").insertAdjacentHTML("beforeend", `
-                    <div id="${info[hyk].id}" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer showinfo">
+    found = false;
+    for (let hyk = 0; hyk < info.length; hyk++) {
+        if (info[hyk].id == 0) {
+            found = true;
+            document.querySelector("#nomsgtrash").style.display = "none";
+            document.querySelector("#employertrash").insertAdjacentHTML("beforeend", `
+                    <div id="${hyk}" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer recycling">
                         <div class="flex gap-2">
                             <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
                             <div class="flex flex-col justify-center">
@@ -859,25 +863,25 @@ trash.onclick = function () {
                             </div>
                         </div>
                     </div>`
-                );
-                if (info[hyk].url == "") {
-                    if (info[hyk].gender == "Male") {
-                        document.querySelector("#profil").src = "img/man.png";
-                    } else {
-                        document.querySelector("#profil").src = "img/woman.png";
-                    }
+            );
+            if (info[hyk].url == "") {
+                if (info[hyk].gender == "Male") {
+                    document.querySelector("#profil").src = "img/man.png";
                 } else {
-                    document.querySelector("#profil").src = info[hyk].url;
+                    document.querySelector("#profil").src = "img/woman.png";
                 }
-                document.querySelector("#profil").removeAttribute("id");
-            }
-            if (found) {
-                document.querySelector("#nomsgtrash").style.display = "none";
             } else {
-                document.querySelector("#nomsgtrash").style.display = "flex";
+                document.querySelector("#profil").src = info[hyk].url;
             }
+            document.querySelector("#profil").removeAttribute("id");
         }
-        trashon();
+        if (found) {
+            document.querySelector("#nomsgtrash").style.display = "none";
+        } else {
+            document.querySelector("#nomsgtrash").style.display = "flex";
+        }
+    }
+    trashon();
 }
 
 newbtn.onclick = function () {
