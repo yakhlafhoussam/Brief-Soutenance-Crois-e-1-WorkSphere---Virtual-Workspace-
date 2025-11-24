@@ -12,7 +12,7 @@
         <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
             <div class="mt-4 w-full px-4 flex flex-col items-center gap-4">
                 <h1 id="redmsg" class="hidden text-red-600 font-bold md:text-2xl">Please fill in the required fields</h1>
-                <img id="newimg" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png" alt="">
+                <img id="newimg" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png" onerror="this.onerror=null; this.src='img/error.png'" alt="">
                 <div class="w-full flex flex-col lg:flex-row gap-4">
                     <div id="imginput" class="bg-white w-full lg:w-[48%] h-8 md:h-12 rounded-full flex justify-between items-center border border-solid">
                         <input id="urlimg" class="w-[80%] h-full rounded-full focus:outline-none pl-3" placeholder="Photo URL" type="text">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div id="experdate" class="bg-white w-full lg:w-[48%] h-8 md:h-12 rounded-full justify-between items-center border border-solid hidden">
-                    <input id="experdateinputs" class="w-[80%] h-full rounded-full focus:outline-none pl-3" placeholder="From" type="text">
+                    <input id="experdateinputs" class="w-[80%] h-full rounded-full focus:outline-none pl-3" placeholder="From" type="date">
                     <div id="adddateex" class="bg-green-600 text-white h-full w-[20%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer">To</div>
                 </div>
                 <div id="experience" class="bg-slate-400 w-full rounded-full hidden flex-wrap items-center gap-x-5 lg:gap-x-8 px-8 md:h-12">
@@ -77,7 +77,7 @@
     <div id="infopopup" class="hidden fixed inset-0 bg-black/50 z-[9999] justify-center items-center">
         <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
             <div class="mt-4 w-full px-4 flex flex-col items-center gap-3">
-                <img id="profile" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png">
+                <img id="profile" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png" onerror="this.onerror=null; this.src='img/error.png'">
                 <h1 id="nameinfo" class="text-slate-900 font-bold md:text-2xl">Houssam YAKHLAF</h1>
                 <h1 id="roleinfo" class="text-slate-900 md:text-2xl">Developer</h1>
                 <a id="emailinfo" href="" class="text-slate-900 md:text-2xl">yakhlafhoussam@gmail.com</a>
@@ -110,7 +110,7 @@
         <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col items-end">
             <div id="closetrashinfo" class="bg-red-600 text-white h-8 md:h-10 w-[10%] flex justify-center items-center p-2 rounded-full md:text-2xl cursor-pointer hover:scale-105 mr-2">Close</div>
             <div class="mt-4 w-full px-4 flex flex-col items-center gap-3">
-                <img id="profilrecycling" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png">
+                <img id="profilrecycling" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png" onerror="this.onerror=null; this.src='img/error.png'">
                 <h1 id="namerecycling" class="text-slate-900 font-bold md:text-2xl">Houssam YAKHLAF</h1>
                 <h1 id="rolerecycling" class="text-slate-900 md:text-2xl">Developer</h1>
                 <a id="emailrecycling" href="" class="text-slate-900 md:text-2xl">yakhlafhoussam@gmail.com</a>
@@ -139,7 +139,7 @@
     <div id="infoputpopup" class="hidden fixed inset-0 bg-black/50 z-[9999] justify-center items-center">
         <div class="w-11/12 py-5 bg-slate-300 rounded-3xl flex flex-col">
             <div class="mt-4 w-full px-4 flex flex-col items-center gap-3">
-                <img id="profileinput" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png">
+                <img id="profileinput" class="rounded-full w-20 h-20 md:w-28 md:h-28" src="img/man.png" onerror="this.onerror=null; this.src='img/error.png'">
                 <h1 id="nameinfoinput" class="text-slate-900 font-bold md:text-2xl">Houssam YAKHLAF</h1>
                 <h1 id="roleinfoinput" class="text-slate-900 md:text-2xl">Developer</h1>
                 <a id="emailinfoinput" href="" class="text-slate-900 md:text-2xl">yakhlafhoussam@gmail.com</a>
@@ -214,39 +214,39 @@
         <div class="w-[38%] h-full flex flex-col justify-between">
             <div class="w-full h-[33%] flex flex-col">
                 <div class="w-full h-[38%] flex justify-center items-end gap-[6%]">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                 </div>
                 <div class="w-full h-[38%] flex justify-center items-center gap-[40%]">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                 </div>
                 <div class="w-full h-[24%] flex justify-center gap-[6%]">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                    <img class="meeting w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                 </div>
             </div>
             <div id="receptionroom" class="w-full h-[66%]">
                 <div class="w-full h-[23%] flex justify-end items-end pr-[24%]">
-                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                 </div>
                 <div class="w-[45%] h-[15%] flex items-center">
                     <div class="w-[42%] h-full flex justify-end items-end">
-                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                     </div>
                     <div class="w-[58%] flex justify-around">
-                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                     </div>
                 </div>
                 <div class="w-[20%] h-[30%] flex flex-col justify-around items-center">
-                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                 </div>
                 <div class="w-[20%] h-[20%] flex flex-col justify-around items-center">
-                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="reception w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                 </div>
             </div>
         </div>
@@ -255,36 +255,36 @@
             <div class="w-full h-[35%] flex">
                 <div id="archiveroom" class="w-1/2 h-full flex justify-around">
                     <div class="h-full w-[30%] flex flex-col justify-around items-center">
-                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                     </div>
                     <div class="h-full w-[30%] flex flex-col justify-around items-start">
-                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="archive w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                     </div>
                 </div>
                 <div id="securityroom" class="w-1/2 h-full flex justify-center items-center">
                     <div class="w-11/12 flex justify-center flex-wrap gap-4">
-                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="security w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                     </div>
                 </div>
             </div>
             <div class="w-full h-[35%] flex">
                 <div class="w-1/2 h-full flex justify-center items-center">
                     <div class="w-full flex justify-center flex-wrap gap-2">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
-                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
+                        <img class="staff w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                     </div>
                 </div>
                 <div id="serverroom" class="w-1/2 h-full flex justify-center items-center">
-                    <img class="server w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png">
+                    <img class="server w-4 h-4 md:w-8 md:h-8 rounded-full cursor-pointer hover:scale-105" src="img/plus.png" onerror="this.onerror=null; this.src='img/error.png'">
                 </div>
             </div>
         </div>
