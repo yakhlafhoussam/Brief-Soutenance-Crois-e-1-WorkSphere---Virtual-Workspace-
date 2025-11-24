@@ -133,6 +133,7 @@ function trashon() {
                 }
             }
             document.querySelector("#recycling").onclick = function () {
+                bigid = 0;
                 for (let i = 0; i < info.length; i++) {
                     if (info[i].id > bigid) {
                         bigid = info[i].id;
@@ -273,7 +274,7 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="" onerror="this.onerror=null; this.src='img/error.png'">
                                     <div class="flex flex-col justify-center">
                                         <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
                                         <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
@@ -358,7 +359,7 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="" onerror="this.onerror=null; this.src='img/error.png'">
                                     <div class="flex flex-col justify-center">
                                         <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
                                         <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
@@ -447,7 +448,7 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="" onerror="this.onerror=null; this.src='img/error.png'">
                                     <div class="flex flex-col justify-center">
                                         <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
                                         <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
@@ -536,7 +537,7 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="" onerror="this.onerror=null; this.src='img/error.png'">
                                     <div class="flex flex-col justify-center">
                                         <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
                                         <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
@@ -625,7 +626,7 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="" onerror="this.onerror=null; this.src='img/error.png'">
                                     <div class="flex flex-col justify-center">
                                         <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
                                         <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
@@ -714,7 +715,7 @@ function plusdisplay() {
                             employerinput.insertAdjacentHTML("beforeend", `
                             <div id="${info[i].id}ed" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer added">
                                 <div class="flex gap-2">
-                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                                    <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="" onerror="this.onerror=null; this.src='img/error.png'">
                                     <div class="flex flex-col justify-center">
                                         <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
                                         <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
@@ -779,7 +780,7 @@ function plusdisplay() {
                     `)
                 }
             }
-            document.querySelector("#situationinput").textContent = "This employer in the staff room";
+            document.querySelector("#situationinput").textContent = "This employer in the server room";
             document.querySelector("#doneinput").onclick = function () {
                 document.querySelector("#infoputpopup").style.display = "none";
             }
@@ -813,7 +814,7 @@ search.onclick = function () {
                 document.querySelector("#employersearch").insertAdjacentHTML("beforeend", `
                     <div id="${info[hyk].id}" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer showinfo">
                         <div class="flex gap-2">
-                            <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                            <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="" onerror="this.onerror=null; this.src='img/error.png'">
                             <div class="flex flex-col justify-center">
                                 <h1 class="text-slate-900 font-bold md:text-2xl">${info[hyk].first} ${info[hyk].last}</h1>
                                 <h1 class="text-slate-900 md:text-2xl">${info[hyk].role}</h1>
@@ -857,7 +858,7 @@ trash.onclick = function () {
             document.querySelector("#employertrash").insertAdjacentHTML("beforeend", `
                     <div id="${hyk}" class="bg-slate-400 w-11/12 py-2 rounded-full flex items-center justify-between px-3 cursor-pointer recycling">
                         <div class="flex gap-2">
-                            <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                            <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="" onerror="this.onerror=null; this.src='img/error.png'">
                             <div class="flex flex-col justify-center">
                                 <h1 class="text-slate-900 font-bold md:text-2xl">${info[hyk].first} ${info[hyk].last}</h1>
                                 <h1 class="text-slate-900 md:text-2xl">${info[hyk].role}</h1>
@@ -975,9 +976,9 @@ document.querySelector("#add").onclick = function () {
                         document.querySelector("#experdateinputs").value = "";
                         document.querySelector("#experdateinputs").placeholder = "From"
                         document.querySelector("#adddateex").textContent = "To"
-                        newinfo.exper.push(document.querySelector("#experinputs").value + " :" + ` ${startex}/${endex}`);
+                        newinfo.exper.push(document.querySelector("#experinputs").value + " :" + ` ${startex} - ${endex}`);
                         document.querySelector("#experience").insertAdjacentHTML("beforeend", `
-                            <li class="text-slate-900 md:text-2xl">${document.querySelector("#experinputs").value} : ${startex}/${endex}</li>`
+                            <li class="text-slate-900 md:text-2xl">${document.querySelector("#experinputs").value} : ${startex} - ${endex}</li>`
                         );
                         document.querySelector("#experinputs").value = "";
                         document.querySelector("#experience").style.display = "flex";
@@ -1116,7 +1117,13 @@ document.querySelector("#create").onclick = function () {
         newinfo.role = role.value;
         newinfo.start = start.value;
         newinfo.end = end.value;
-        newinfo.id = info.length + 1;
+        bigid = 0;
+        for (let i = 0; i < info.length; i++) {
+            if (info[i].id > bigid) {
+                bigid = info[i].id;
+            }
+        }
+        newinfo.id = bigid + 1;
         info.push(newinfo);
         window.localStorage.setItem("employer", JSON.stringify(info));
         document.querySelector("#popup").style.display = "none";
@@ -1142,7 +1149,7 @@ if (total == 0) {
                 employerplay.insertAdjacentHTML("beforeend", `
                     <div id="${info[i].id}" class="bg-slate-400 w-full py-2 rounded-full flex items-center justify-between px-3 cursor-pointer showinfo">
                         <div class="flex gap-2">
-                            <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="">
+                            <img id="profil" class="w-14 h-14 lg:w-20 lg:h-20 rounded-full" src="" onerror="this.onerror=null; this.src='img/error.png'">
                             <div class="flex flex-col justify-center">
                                 <h1 class="text-slate-900 font-bold md:text-2xl">${info[i].first} ${info[i].last}</h1>
                                 <h1 class="text-slate-900 md:text-2xl">${info[i].role}</h1>
